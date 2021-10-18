@@ -274,6 +274,8 @@ public class Login extends javax.swing.JFrame {
         String email, senha;
         email = txtEmail.getText();
         senha = txtSenha.getText();
+        
+        
 
         if (senha.length() >= 8) {
             showMessageDialog(null, "Carregando ...");
