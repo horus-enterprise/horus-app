@@ -248,8 +248,9 @@ public class Login extends javax.swing.JFrame {
         email = txtEmail.getText();
         senha = txtSenha.getText();
         
-        if(senha.length() < 8 ){
-          showMessageDialog(null, "Senha invalida");       }
+        if (senha.length() < 8 ) {
+          showMessageDialog(null, "Senha invalida");       
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
