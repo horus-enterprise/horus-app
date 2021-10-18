@@ -55,6 +55,9 @@ public class Funcionario {
     public void setFkSupervisor(Integer fkSupervisor) {
         this.fkSupervisor = fkSupervisor;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "idFuncionario=" + idFuncionario + ", nomeFuncionario=" + nomeFuncionario + ", email=" + email + ", senha=" + senha + ", fkEmpresa=" + fkEmpresa + ", fkSupervisor=" + fkSupervisor + '}';
+    }
 }
