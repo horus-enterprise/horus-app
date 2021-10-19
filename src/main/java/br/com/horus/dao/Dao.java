@@ -9,8 +9,8 @@ public class Dao {
         this.dataSource = new BasicDataSource();
         this.dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         this.dataSource.setUrl("jdbc:mysql://localhost/Horus?serverTimezone=UTC");
-        this.dataSource.setUsername("root");
-        this.dataSource.setPassword("********");
+        this.dataSource.setUsername("horus");
+        this.dataSource.setPassword("@horus2021");
     }
     
     public BasicDataSource getDataSource() {
