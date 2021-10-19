@@ -6,7 +6,8 @@ public class MonitoramentoHardware {
     private Integer idOcorrencia;
     private Integer fkMaquina;
     private Date dataHora;
-    private Double cpu;
+    private Double cpuUso;
+    private Float cpuTemperatura;
     private Double disco;
     private Double ram;
     private String uptime;
@@ -35,12 +36,20 @@ public class MonitoramentoHardware {
         this.dataHora = dataHora;
     }
 
-    public Double getCpu() {
-        return cpu;
+    public Double getCpuUso() {
+        return cpuUso;
     }
 
-    public void setCpu(Double cpu) {
-        this.cpu = cpu;
+    public void setCpuUso(Double cpu) {
+        this.cpuUso = cpuUso;
+    }
+
+    public Double getCpuTemperatura() {
+        return cpuTemperatura;
+    }
+
+    public void setCpuTemperatura(Double cpuTemperatura) {
+        this.cpuTemperatura = cpuTemperatura;
     }
 
     public Double getDisco() {
@@ -66,6 +75,4 @@ public class MonitoramentoHardware {
     public void setUptime(String uptime) {
         this.uptime = uptime;
     }
-    
-    
 }
