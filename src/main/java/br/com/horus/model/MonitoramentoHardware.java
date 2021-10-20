@@ -10,7 +10,7 @@ public class MonitoramentoHardware {
     private Double cpuTemperatura;
     private Double disco;
     private Double ram;
-    private String uptime;
+    private Long uptime;
 
     public Integer getIdOcorrencia() {
         return idOcorrencia;
@@ -40,7 +40,7 @@ public class MonitoramentoHardware {
         return cpuUso;
     }
 
-    public void setCpuUso(Double cpu) {
+    public void setCpuUso(Double cpuUso) {
         this.cpuUso = cpuUso;
     }
 
@@ -73,11 +73,11 @@ public class MonitoramentoHardware {
         return "MonitoramentoHardware{" + "idOcorrencia=" + idOcorrencia + ", fkMaquina=" + fkMaquina + ", dataHora=" + dataHora + ", cpuUso=" + cpuUso + ", cpuTemperatura=" + cpuTemperatura + ", disco=" + disco + ", ram=" + ram + ", uptime=" + uptime + '}';
     }
 
-    public String getUptime() {
+    public Long getUptime() {
         return uptime;
     }
 
-    public void setUptime(String uptime) {
+    public void setUptime(Long uptime) {
         this.uptime = uptime;
     }
 }

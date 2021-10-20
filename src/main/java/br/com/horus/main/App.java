@@ -6,16 +6,14 @@ import br.com.horus.gui.Login;
 import br.com.horus.model.Maquina;
 import br.com.horus.model.MonitoramentoHardware;
 import br.com.horus.utils.Hostname;
-import br.com.horus.utils.Time;
 import com.github.britooo.looca.api.core.Looca;
 
 public class App {
 
     public static void main(String[] args) {
         System.out.println("Iniciando...");
-        Login login = new Login();
+        Login login = new Login(); 
         login.setVisible(true);
-        
     }
 
     public static void start() {
@@ -29,7 +27,11 @@ public class App {
 
         ocorrencia.setFkMaquina(maquina.getIdMaquina());
         
-        ocorrencia.setCpuUso(looca.getProcessador().getUso());
+        
+        Double cpuUso = looca.getProcessador().getUso();
+        
+        ocorrencia.setCpuUso(cpuUso);
+        
         ocorrencia.setCpuTemperatura(looca.getTemperatura().getTemperatura());
 
         Long volumeTotal = looca.getGrupoDeDiscos().getVolumes().get(0).getTotal();
@@ -41,8 +43,7 @@ public class App {
         ocorrencia.setDisco(percentVolumeUso);
         ocorrencia.setRam(looca.getMemoria().getEmUso() / Math.pow(1024, 3));
 
-        String uptime = Time.secondsToHHmmss(looca.getSistema().getTempoDeAtividade());
-
+        Long uptime = looca.getSistema().getTempoDeAtividade();
         ocorrencia.setUptime(uptime);
         
         System.out.println(ocorrencia);
