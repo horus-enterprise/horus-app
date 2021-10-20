@@ -9,6 +9,11 @@ public class Maquina {
         return idMaquina;
     }
 
+    @Override
+    public String toString() {
+        return "Maquina{" + "idMaquina=" + idMaquina + ", fkEmpresa=" + fkEmpresa + ", hostname=" + hostname + '}';
+    }
+
     public void setIdMaquina(Integer idMaquina) {
         this.idMaquina = idMaquina;
     }

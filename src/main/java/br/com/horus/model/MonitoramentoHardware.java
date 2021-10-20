@@ -7,7 +7,7 @@ public class MonitoramentoHardware {
     private Integer fkMaquina;
     private Date dataHora;
     private Double cpuUso;
-    private Float cpuTemperatura;
+    private Double cpuTemperatura;
     private Double disco;
     private Double ram;
     private String uptime;
@@ -66,6 +66,11 @@ public class MonitoramentoHardware {
 
     public void setRam(Double ram) {
         this.ram = ram;
+    }
+
+    @Override
+    public String toString() {
+        return "MonitoramentoHardware{" + "idOcorrencia=" + idOcorrencia + ", fkMaquina=" + fkMaquina + ", dataHora=" + dataHora + ", cpuUso=" + cpuUso + ", cpuTemperatura=" + cpuTemperatura + ", disco=" + disco + ", ram=" + ram + ", uptime=" + uptime + '}';
     }
 
     public String getUptime() {

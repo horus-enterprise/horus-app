@@ -16,7 +16,6 @@ public class MonitoramentoHardwareDao extends Dao {
         sql.append("fkMaquina, cpuUso, cpuTemperatura, disco, ram, uptime)");
         sql.append("VALUES (");
         sql.append(ocorrencia.getFkMaquina() + ",");
-        sql.append(ocorrencia.getDataHora() + ",");
         sql.append(ocorrencia.getCpuUso() + ",");
         sql.append(ocorrencia.getCpuTemperatura() + ",");
         sql.append(ocorrencia.getDisco() + ",");

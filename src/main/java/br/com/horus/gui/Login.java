@@ -5,8 +5,8 @@
  */
 package br.com.horus.gui;
 
-import br.com.horus.gui.Home;
 import br.com.horus.dao.FuncionarioDao;
+import br.com.horus.main.App;
 import br.com.horus.model.Funcionario;
 
 
@@ -273,6 +273,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -284,11 +285,11 @@ public class Login extends javax.swing.JFrame {
         
         Funcionario funcionario = funcionarioDAO.listar(email, senha);
         
-
         if (funcionario != null) {
             Home obj = new Home();
             obj.setVisible(true);
-            setVisible(false);
+            this.setVisible(false);
+            App.start();
         } else {
             showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
         }

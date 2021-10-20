@@ -1,7 +1,8 @@
 package br.com.horus.dao;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 import br.com.horus.model.Funcionario;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 

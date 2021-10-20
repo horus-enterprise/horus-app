@@ -3,7 +3,6 @@ package br.com.horus.dao;
 import br.com.horus.model.Funcionario;
 import br.com.horus.model.Maquina;
 import java.util.List;
-import java.util.Map;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -15,10 +14,10 @@ public class MaquinaDao extends Dao {
     }
     
     public Maquina listar (String hostname) {
-        String sql = "SELECT * FROM Maquina WHERE hostaname = " + hostname;
+        String sql = "SELECT * FROM Maquina WHERE hostname = '" + hostname + "'";
         
         List<Maquina> maquina = con.query(sql,
-                new BeanPropertyRowMapper(Funcionario.class));
+                new BeanPropertyRowMapper(Maquina.class));
         
         return maquina.get(0);
     }
