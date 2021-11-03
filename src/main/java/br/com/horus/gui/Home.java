@@ -9,7 +9,6 @@ package br.com.horus.gui;
  *
  * @author Anderson
  */
-import br.com.horus.gui.Login;
 
 public class Home extends javax.swing.JFrame {
 
@@ -189,6 +188,8 @@ public class Home extends javax.swing.JFrame {
                 new Home().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
