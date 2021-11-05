@@ -8,30 +8,16 @@ import br.com.horus.model.MonitoramentoHardware;
 import br.com.horus.utils.Hostname;
 import com.github.britooo.looca.api.core.Looca;
 
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class App {
 
     public static void main(String[] args) {
-        final long segundos = (1000 * 10);
+        
 
         System.out.println("Iniciando...");
         Login login = new Login();
         login.setVisible(true);
-        
-        
-        Timer tempo = new Timer();
-
-        TimerTask monitoramento = new TimerTask() {
-
-            @Override
-            public void run() {
-                System.out.println("Dados coletados");
-            }
-        };
-
-        tempo.scheduleAtFixedRate(monitoramento, 1, segundos);
     }
 
     public static void start() {

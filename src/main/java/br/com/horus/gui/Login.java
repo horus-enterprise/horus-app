@@ -7,8 +7,10 @@ package br.com.horus.gui;
 
 import br.com.horus.dao.FuncionarioDao;
 import br.com.horus.main.App;
+import static br.com.horus.main.App.start;
 import br.com.horus.model.Funcionario;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -280,16 +282,30 @@ public class Login extends javax.swing.JFrame {
         String email, senha;
         email = txtEmail.getText();
         senha = txtSenha.getText();
-        
+
         FuncionarioDao funcionarioDAO = new FuncionarioDao();
-        
+
         Funcionario funcionario = funcionarioDAO.listar(email, senha);
-        
+
         if (funcionario != null) {
             Home obj = new Home();
             obj.setVisible(true);
             this.setVisible(false);
-            App.start();
+            final long segundos = (1000 * 15);
+
+            Timer tempo = new Timer();
+
+            TimerTask monitoramento = new TimerTask() {
+
+                @Override
+                public void run() {
+
+                    start();
+                }
+            };
+
+            tempo.scheduleAtFixedRate(monitoramento, 1, segundos);
+
         } else {
             showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
         }
