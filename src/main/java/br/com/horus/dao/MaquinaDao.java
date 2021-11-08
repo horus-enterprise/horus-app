@@ -7,18 +7,20 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class MaquinaDao extends Dao {
+
     JdbcTemplate con;
-    
+
     public MaquinaDao() {
         this.con = new JdbcTemplate(getDataSource());
     }
-    
-    public Maquina listar (String hostname) {
-        String sql = "SELECT * FROM Maquina WHERE hostname = '" + hostname + "'";
-        
+
+    public Maquina listar(String hostname, Integer fkEmpresa) {
+        String sql = "SELECT * FROM Maquina WHERE hostname = '" + hostname
+                   + "' AND fkEmpresa = " + fkEmpresa;
+
         List<Maquina> maquina = con.query(sql,
                 new BeanPropertyRowMapper(Maquina.class));
-        
+
         return maquina.get(0);
     }
 }

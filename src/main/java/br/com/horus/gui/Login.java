@@ -11,6 +11,7 @@ import static br.com.horus.main.App.start;
 import br.com.horus.model.Funcionario;
 import java.util.Timer;
 import java.util.TimerTask;
+import br.com.horus.utils.Session;
 
 /**
  *
@@ -282,12 +283,20 @@ public class Login extends javax.swing.JFrame {
         String email, senha;
         email = txtEmail.getText();
         senha = txtSenha.getText();
+        
 
         FuncionarioDao funcionarioDAO = new FuncionarioDao();
 
         Funcionario funcionario = funcionarioDAO.listar(email, senha);
 
         if (funcionario != null) {
+            
+            Session.criarSessao(
+                funcionario.getNomeFuncionario(),
+                funcionario.getEmail(), 
+                funcionario.getFkEmpresa()
+            );
+            
             Home obj = new Home();
             obj.setVisible(true);
             this.setVisible(false);

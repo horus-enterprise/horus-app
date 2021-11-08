@@ -23,7 +23,7 @@ public class App {
     public static void start() {
         MaquinaDao maquinaDAO = new MaquinaDao();
 
-        Maquina maquina = maquinaDAO.listar(Hostname.getHostname());
+        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(), 1);
 
         Looca looca = new Looca();
 

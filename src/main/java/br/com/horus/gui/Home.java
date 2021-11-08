@@ -5,10 +5,7 @@
  */
 package br.com.horus.gui;
 
-/**
- *
- * @author Anderson
- */
+import br.com.horus.utils.Session;
 
 public class Home extends javax.swing.JFrame {
 
@@ -33,7 +30,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JLabel();
+        txtNomeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -63,8 +60,8 @@ public class Home extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-user-30 (1).png"))); // NOI18N
 
-        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setText("Raoan");
+        txtNomeUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtNomeUsuario.setText("Raoan");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,7 +83,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsuario)
+                .addComponent(txtNomeUsuario)
                 .addGap(203, 203, 203)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
@@ -100,7 +97,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsuario)
+                    .addComponent(txtNomeUsuario)
                     .addComponent(jLabel2))
                 .addGap(112, 112, 112))
         );
@@ -150,6 +147,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+            Session.deletarSessao();
             Login obj = new Login();
             obj.setVisible(true);
             setVisible(false);
@@ -158,6 +156,8 @@ public class Home extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -186,9 +186,11 @@ public class Home extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Home().setVisible(true);
+               
+                System.out.println("SESSAO nome: " + Session.getNome());
+                txtNomeUsuario.setText(Session.getNome());
             }
         });
-        
         
     }
 
@@ -201,6 +203,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel txtUsuario;
+    private static javax.swing.JLabel txtNomeUsuario;
     // End of variables declaration//GEN-END:variables
 }
+
