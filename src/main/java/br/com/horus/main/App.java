@@ -6,6 +6,7 @@ import br.com.horus.gui.Login;
 import br.com.horus.model.Maquina;
 import br.com.horus.model.MonitoramentoHardware;
 import br.com.horus.utils.Hostname;
+import br.com.horus.utils.Session;
 import com.github.britooo.looca.api.core.Looca;
 
 
@@ -21,9 +22,10 @@ public class App {
     }
 
     public static void start() {
+                
         MaquinaDao maquinaDAO = new MaquinaDao();
 
-        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(), 1);
+        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(),Session.getFkEmpresa());
 
         Looca looca = new Looca();
 

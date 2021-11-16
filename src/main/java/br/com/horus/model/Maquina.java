@@ -4,6 +4,24 @@ public class Maquina {
     private Integer idMaquina;
     private Integer fkEmpresa;
     private String hostname;
+    private String nomeCpu;
+    private String modeloDisco;
+
+    public String getNomeCpu() {
+        return nomeCpu;
+    }
+
+    public void setNomeCpu(String nomeCpu) {
+        this.nomeCpu = nomeCpu;
+    }
+
+    public String getModeloDisco() {
+        return modeloDisco;
+    }
+
+    public void setModeloDisco(String modeloDisco) {
+        this.modeloDisco = modeloDisco;
+    }
 
     public Integer getIdMaquina() {
         return idMaquina;
