@@ -12,6 +12,9 @@ import br.com.horus.model.Funcionario;
 import java.util.Timer;
 import java.util.TimerTask;
 import br.com.horus.utils.Session;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -302,6 +305,11 @@ public class Login extends javax.swing.JFrame {
                     funcionario.getEmail(),
                     funcionario.getFkEmpresa()
             );
+            try {
+                Session.criarLogger();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             maquinaDAO.validaMaquina();
 

@@ -1,9 +1,15 @@
 package br.com.horus.utils;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Session {
     private static String nome;
     private static String email;
     private static Integer fkEmpresa;
+    static FileWriter arquivo;
 
     public static String getNome() {
         return nome;
@@ -35,10 +41,19 @@ public class Session {
         Session.email = email;
         Session.fkEmpresa = fkEmpresa;
     }
-    
-    public static void deletarSessao() {
+    public static void criarLogger()throws IOException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String data = sdf.format(new Date());
+        arquivo = new FileWriter("D:\\horus-loggers\\" + data + ".txt");
+        Logger.caminhoLogger(arquivo);
+    }
+    public static void deletarSessao(){
         Session.nome = null;
         Session.email = null;
         Session.fkEmpresa = null;
+      
+    }
+    public static void fecharLogger()throws IOException{
+          arquivo.close();
     }
 }

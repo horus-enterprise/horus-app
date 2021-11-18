@@ -7,6 +7,9 @@ package br.com.horus.gui;
 
 import br.com.horus.model.MonitoramentoWeb;
 import br.com.horus.utils.Session;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Home extends javax.swing.JFrame {
 
@@ -151,7 +154,11 @@ public class Home extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
             Session.deletarSessao();
-            
+        try {
+            Session.fecharLogger();
+        } catch (IOException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
             Login obj = new Login();
             obj.setVisible(true);
             setVisible(false);
