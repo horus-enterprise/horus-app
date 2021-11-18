@@ -342,9 +342,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        showMessageDialog(null,"Esse canal é para alteração da sua senha,\n "
+        showMessageDialog(null, "Esse canal é para alteração da sua senha,\n "
                 + "caso não lembre a senha antiga ou email entre em contato com o seu adiministrador!");
-        
+
         RedefinirSenha obj = new RedefinirSenha();
         obj.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed

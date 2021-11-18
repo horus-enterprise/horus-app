@@ -26,14 +26,11 @@ public class FuncionarioDao extends Dao {
         }
         List<Funcionario> funcionario = con.query(sql,
                 new BeanPropertyRowMapper(Funcionario.class), email, senha);
-        try {
-            if (funcionario.isEmpty()) {
-                return null;
-            }
-            Logger.loger("> Não existem funcionários");
-        } catch (Exception e) {
-            Logger.loger(e);
+
+        if (funcionario.isEmpty()) {
+            return null;
         }
+
         return funcionario.get(0);
     }
 

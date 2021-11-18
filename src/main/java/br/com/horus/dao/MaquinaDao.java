@@ -37,10 +37,20 @@ public class MaquinaDao extends Dao {
         Maquina maquina = listar(Hostname.getHostname(), Session.getFkEmpresa());
 
         if (maquina != null) {
-            System.out.println("validada");
+            try {
+                System.out.println("validada");
+                Logger.loger("> Monitorando máquina.");
+            } catch (Exception e) {
+                Logger.loger(e);
+            }
             return true;
         } else {
-            System.out.println("Vai ser cadastrada");
+            try {
+                System.out.println("Vai ser cadastrada");
+                Logger.loger("> Cadastre a máquina antes de monitorar");
+            } catch (Exception e) {
+                Logger.loger(e);
+            }
             cadastraMaquina();
             return true;
         }

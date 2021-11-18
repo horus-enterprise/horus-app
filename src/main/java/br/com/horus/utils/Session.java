@@ -3,7 +3,7 @@ package br.com.horus.utils;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 public class Session {
     private static String nome;
@@ -37,20 +37,29 @@ public class Session {
     
     
     public static void criarSessao(String nome, String email, Integer fkEmpresa) {
+        try{
         Session.nome = nome;
         Session.email = email;
         Session.fkEmpresa = fkEmpresa;
+        Logger.loger("> Autenticação de usúario ok.");
+        }catch(Exception e){
+            Logger.loger(e);
+        }
     }
     public static void criarLogger()throws IOException{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        String data = sdf.format(new Date());
-        arquivo = new FileWriter("D:\\horus-loggers\\" + data + ".txt");
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        arquivo = new FileWriter("D:\\horus-loggers\\" + timeStamp + ".txt");
         Logger.caminhoLogger(arquivo);
     }
     public static void deletarSessao(){
+        try{
         Session.nome = null;
         Session.email = null;
         Session.fkEmpresa = null;
+        Logger.loger("> Deslogar ok.");
+        }catch(Exception e){
+            Logger.loger(e);
+        }
       
     }
     public static void fecharLogger()throws IOException{

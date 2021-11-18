@@ -5,52 +5,45 @@
  */
 package br.com.horus.utils;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
  * @author HP 420
  */
 public class Logger {
-static ArrayList dadosTexto = new ArrayList();
+
+    static ArrayList dadosTexto = new ArrayList();
+
     public static void loger(String texto) {
-       
+
         dadosTexto.add(texto);
     }
 
-    static void caminhoLogger(FileWriter arquivo) throws IOException{
-         Integer cont = 0;
-   
+    static void caminhoLogger(FileWriter arquivo) throws IOException {
+        Integer cont = 0;
+
         ArrayList arquivos = new ArrayList();
-     
+
         PrintWriter gravarArq = new PrintWriter(arquivo);
         arquivos.add(arquivo);
-     
+
         for (Integer i = 0; i < arquivos.size(); i++) {
             Integer tamanhoArray = arquivos.size() - 1;
-            
+
             if (arquivo.equals(arquivos.get(tamanhoArray))) {
-                gravarArq.printf("Horus\n");
+                gravarArq.printf("Bem-vindo à Horus\n");
                 do {
 
-                    
-
-                    gravarArq.printf("%s\n",dadosTexto.get(cont));
+                    gravarArq.printf("%s\n", dadosTexto.get(cont));
                     System.out.println(dadosTexto.get(cont));
                     cont++;
                 } while (cont < dadosTexto.size());
             }
         }
-
-        
     }
 
     public static void loger(Exception e) {
