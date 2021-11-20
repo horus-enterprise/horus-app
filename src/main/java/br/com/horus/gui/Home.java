@@ -6,10 +6,10 @@
 package br.com.horus.gui;
 
 import br.com.horus.model.MonitoramentoWeb;
+import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Home extends javax.swing.JFrame {
 
@@ -158,11 +158,16 @@ public class Home extends javax.swing.JFrame {
             Login obj = new Login();
             obj.setVisible(true);
             setVisible(false);
-
-            Session.fecharLogger();
-        } catch (IOException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.escreverLogger("> Deslogou com sucesso!");
+        }catch(IOException e){
+            Logger.loggerException(e);
         }
+            try{
+            Logger.fecharLogger();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

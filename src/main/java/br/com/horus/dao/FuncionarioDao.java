@@ -2,6 +2,7 @@ package br.com.horus.dao;
 
 import br.com.horus.model.Funcionario;
 import br.com.horus.utils.Logger;
+import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -20,9 +21,9 @@ public class FuncionarioDao extends Dao {
         String sql = "";
         try {
             sql = "SELECT * FROM Funcionario WHERE email = ? AND senha = ?";
-            Logger.loger("> Select dos funcionários ok");
-        } catch (Exception e) {
-            Logger.loger(e);
+            Logger.escreverLogger("> Select dos funcionários ok");
+        } catch (IOException e) {
+            Logger.loggerException(e);
         }
         List<Funcionario> funcionario = con.query(sql,
                 new BeanPropertyRowMapper(Funcionario.class), email, senha);
@@ -43,10 +44,10 @@ public class FuncionarioDao extends Dao {
             } else {
                 showMessageDialog(null, "Os dados informados estão incorreto!\n"
                         + "Verifique e tente novamente ou contate seu adiministrador.");
-                Logger.loger("> Redefinir senha");
+                Logger.escreverLogger("> Redefinir senha");
             }
-        } catch (Exception e) {
-            Logger.loger(e);
+        } catch (IOException e) {
+            Logger.loggerException(e);
         }
     }
 }

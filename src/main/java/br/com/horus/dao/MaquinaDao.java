@@ -5,6 +5,7 @@ import br.com.horus.utils.Hostname;
 import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
 import com.github.britooo.looca.api.core.Looca;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,9 +23,9 @@ public class MaquinaDao extends Dao {
         try {
             sql = "SELECT * FROM Maquina WHERE hostname = '" + hostname
                     + "' AND fkEmpresa = " + fkEmpresa;
-            Logger.loger("> Select das máquinas ok");
-        } catch (Exception e) {
-            Logger.loger(e);
+            Logger.escreverLogger("> Select das máquinas ok");
+        } catch (IOException e) {
+            Logger.loggerException(e);
         }
         List<Maquina> maquina = con.query(sql,
                 new BeanPropertyRowMapper(Maquina.class));
@@ -39,17 +40,17 @@ public class MaquinaDao extends Dao {
         if (maquina != null) {
             try {
                 System.out.println("validada");
-                Logger.loger("> Monitorando máquina.");
-            } catch (Exception e) {
-                Logger.loger(e);
+                Logger.escreverLogger("> Monitorando máquina.");
+            } catch (IOException e) {
+                Logger.loggerException(e);
             }
             return true;
         } else {
             try {
                 System.out.println("Vai ser cadastrada");
-                Logger.loger("> Cadastre a máquina antes de monitorar");
-            } catch (Exception e) {
-                Logger.loger(e);
+                Logger.escreverLogger("> Cadastre a máquina antes de monitorar");
+            } catch (IOException e) {
+                Logger.loggerException(e);
             }
             cadastraMaquina();
             return true;
@@ -63,9 +64,9 @@ public class MaquinaDao extends Dao {
             con.update(insertStatement, Hostname.getHostname(), Session.getFkEmpresa(), looca.getProcessador().getNome(),
                     looca.getGrupoDeDiscos().getDiscos().get(0).getModelo());
             System.out.println("Nova maquina cadastrada!");
-            Logger.loger("> Máquina cadastrada.");
-        } catch (Exception e) {
-            Logger.loger(e);
+            Logger.escreverLogger("> Máquina cadastrada.");
+        } catch (IOException e) {
+            Logger.loggerException(e);
         }
     }
 

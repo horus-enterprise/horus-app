@@ -9,12 +9,11 @@ import br.com.horus.dao.FuncionarioDao;
 import br.com.horus.dao.MaquinaDao;
 import static br.com.horus.main.App.start;
 import br.com.horus.model.Funcionario;
+import br.com.horus.utils.Logger;
 import java.util.Timer;
 import java.util.TimerTask;
 import br.com.horus.utils.Session;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -292,48 +291,47 @@ public class Login extends javax.swing.JFrame {
         String email, senha;
         email = txtEmail.getText();
         senha = txtSenha.getText();
-
+        
         FuncionarioDao funcionarioDAO = new FuncionarioDao();
         MaquinaDao maquinaDAO = new MaquinaDao();
-
+        
         Funcionario funcionario = funcionarioDAO.listar(email, senha);
-
-        if (funcionario != null) {
-
-            Session.criarSessao(
-                    funcionario.getNomeFuncionario(),
-                    funcionario.getEmail(),
-                    funcionario.getFkEmpresa()
-            );
-            try {
-                Session.criarLogger();
-            } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            if (funcionario != null) {
+                
+                Session.criarSessao(
+                        funcionario.getNomeFuncionario(),
+                        funcionario.getEmail(),
+                        funcionario.getFkEmpresa()
+                );
+                
+                maquinaDAO.validaMaquina();
+                
+                Home obj = new Home();
+                obj.setVisible(true);
+                setVisible(false);
+                
+                final long segundos = (1000 * 15);
+                
+                Timer tempo = new Timer();
+                
+                TimerTask monitoramento = new TimerTask() {
+                    
+                    @Override
+                    public void run() {
+                        
+                        start();
+                    }
+                };
+                
+                tempo.scheduleAtFixedRate(monitoramento, 1, segundos);
+                
+            } else {
+                showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
             }
-
-            maquinaDAO.validaMaquina();
-
-            Home obj = new Home();
-            obj.setVisible(true);
-            setVisible(false);
-
-            final long segundos = (1000 * 15);
-
-            Timer tempo = new Timer();
-
-            TimerTask monitoramento = new TimerTask() {
-
-                @Override
-                public void run() {
-
-                    start();
-                }
-            };
-
-            tempo.scheduleAtFixedRate(monitoramento, 1, segundos);
-
-        } else {
-            showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
+            Logger.escreverLogger("> Usuário atenticado.");
+        } catch (IOException e) {
+            Logger.loggerException(e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -344,9 +342,13 @@ public class Login extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         showMessageDialog(null, "Esse canal é para alteração da sua senha,\n "
                 + "caso não lembre a senha antiga ou email entre em contato com o seu adiministrador!");
-
+        try{
         RedefinirSenha obj = new RedefinirSenha();
         obj.setVisible(true);
+        Logger.escreverLogger("> Redefinir senha com sucesso");
+        }catch(IOException e){
+            Logger.loggerException(e);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

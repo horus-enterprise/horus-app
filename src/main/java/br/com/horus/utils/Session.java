@@ -1,15 +1,11 @@
 package br.com.horus.utils;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class Session {
     private static String nome;
     private static String email;
     private static Integer fkEmpresa;
-    static FileWriter arquivo;
 
     public static String getNome() {
         return nome;
@@ -41,28 +37,22 @@ public class Session {
         Session.nome = nome;
         Session.email = email;
         Session.fkEmpresa = fkEmpresa;
-        Logger.loger("> Autenticação de usúario ok.");
-        }catch(Exception e){
-            Logger.loger(e);
+        Logger.escreverLogger("> Autenticação de usúario ok.");
+        }catch(IOException e){
+            Logger.loggerException(e);
         }
     }
-    public static void criarLogger()throws IOException{
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-        arquivo = new FileWriter("D:\\horus-loggers\\" + timeStamp + ".txt");
-        Logger.caminhoLogger(arquivo);
-    }
+ 
     public static void deletarSessao(){
         try{
         Session.nome = null;
         Session.email = null;
         Session.fkEmpresa = null;
-        Logger.loger("> Deslogar ok.");
-        }catch(Exception e){
-            Logger.loger(e);
+        Logger.escreverLogger("> Deslogar ok.");
+        }catch(IOException e){
+            Logger.loggerException(e);
         }
       
     }
-    public static void fecharLogger()throws IOException{
-          arquivo.close();
-    }
+ 
 }

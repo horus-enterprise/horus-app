@@ -251,10 +251,10 @@ public class RedefinirSenha extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FuncionarioDao funcionario = new FuncionarioDao();
-        if(txtNovaSenha.getText().equals(txtConfirmarSenha.getText())){
-          funcionario.redefinirSenha(txtEmail.getText(),txtSenhaAntiga.getText(),txtNovaSenha.getText());
-        }else{
-          showMessageDialog(null,"A confirmação da nova senha esta divergente!\nVerifique e tente novamente!");
+        if (txtNovaSenha.getText().equals(txtConfirmarSenha.getText())) {
+            funcionario.redefinirSenha(txtEmail.getText(), txtSenhaAntiga.getText(), txtNovaSenha.getText());
+        } else {
+            showMessageDialog(null, "A confirmação da nova senha esta divergente!\nVerifique e tente novamente!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -265,7 +265,6 @@ public class RedefinirSenha extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
