@@ -6,7 +6,6 @@ import br.com.horus.gui.Login;
 import br.com.horus.model.Maquina;
 import br.com.horus.model.MonitoramentoHardware;
 import br.com.horus.utils.Hostname;
-import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
 import com.github.britooo.looca.api.core.Looca;
 import java.io.IOException;
@@ -15,13 +14,9 @@ import java.io.IOException;
 
 public class App {
 
-<<<<<<< HEAD
-    public static void main(String[] args) {
-=======
-    public static void main(String[] args) throws IOException {
-        Logger.criarLogger();
 
->>>>>>> 95ac509d83b9550c792be1d0cb30fd62c146303c
+    public static void main(String[] args) {
+
         System.out.println("Iniciando...");
         Login login = new Login();
         login.setVisible(true);

@@ -5,19 +5,12 @@
  */
 package br.com.horus.gui;
 
-<<<<<<< HEAD
+
 import br.com.horus.utils.Session;
 import static br.com.horus.utils.Time.secondsToHHmmss;
 import java.text.DateFormat;
 import java.util.Date;
-=======
-import br.com.horus.model.MonitoramentoWeb;
-import br.com.horus.utils.Logger;
-import br.com.horus.utils.Session;
-import java.io.IOException;
-import java.util.logging.Level;
 
->>>>>>> 95ac509d83b9550c792be1d0cb30fd62c146303c
 public class Home extends javax.swing.JFrame {
 
     /**
@@ -224,30 +217,12 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
+
         Session.deletarSessao();
 
         Login obj = new Login();
         obj.setVisible(true);
         setVisible(false);
-=======
-        try {
-            Session.deletarSessao();
-
-            Login obj = new Login();
-            obj.setVisible(true);
-            setVisible(false);
-            Logger.escreverLogger("> Deslogou com sucesso!");
-        }catch(IOException e){
-            Logger.loggerException(e);
-        }
-            try{
-            Logger.fecharLogger();
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
->>>>>>> 95ac509d83b9550c792be1d0cb30fd62c146303c
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

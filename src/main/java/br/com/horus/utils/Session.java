@@ -1,6 +1,5 @@
 package br.com.horus.utils;
 
-import java.io.IOException;
 
 public class Session {
     private static String nome;
@@ -15,10 +14,6 @@ public class Session {
     public static void setUptime(Integer uptime) {
         Session.uptime = uptime;
     }
-
-    
-
-   
 
     public static String getNome() {
         return nome;
@@ -46,26 +41,15 @@ public class Session {
     
     
     public static void criarSessao(String nome, String email, Integer fkEmpresa) {
-        try{
         Session.nome = nome;
         Session.email = email;
         Session.fkEmpresa = fkEmpresa;
-        Logger.escreverLogger("> Autenticação de usúario ok.");
-        }catch(IOException e){
-            Logger.loggerException(e);
-        }
     }
  
     public static void deletarSessao(){
-        try{
         Session.nome = null;
         Session.email = null;
         Session.fkEmpresa = null;
-        Logger.escreverLogger("> Deslogar ok.");
-        }catch(IOException e){
-            Logger.loggerException(e);
-        }
-      
     }
  
 }
