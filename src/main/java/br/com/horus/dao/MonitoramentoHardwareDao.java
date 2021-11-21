@@ -1,6 +1,8 @@
 package br.com.horus.dao;
 
 import br.com.horus.model.MonitoramentoHardware;
+import br.com.horus.utils.Logger;
+import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class MonitoramentoHardwareDao extends Dao {
@@ -12,6 +14,7 @@ public class MonitoramentoHardwareDao extends Dao {
     
     public void enviar(MonitoramentoHardware ocorrencia) {
         StringBuilder sql = new StringBuilder();
+        try{
         sql.append("INSERT INTO MonitoramentoHardware (");
         sql.append("fkMaquina, cpuUso, cpuTemperatura, disco, ram, uptime)");
         sql.append("VALUES (");
@@ -23,6 +26,11 @@ public class MonitoramentoHardwareDao extends Dao {
         sql.append(ocorrencia.getUptime());
         sql.append(");");
         
-        con.execute(sql.toString());
+
+        Logger.escreverLogger("> Insert do monitoramento ok");
+        }catch(IOException e){
+            Logger.loggerException(e);
+        }
+                con.execute(sql.toString());
     } 
 }
