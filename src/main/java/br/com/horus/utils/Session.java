@@ -1,7 +1,9 @@
 package br.com.horus.utils;
 
+import java.io.IOException;
 
 public class Session {
+
     private static String nome;
     private static String email;
     private static Integer fkEmpresa;
@@ -38,18 +40,27 @@ public class Session {
     public static void setFkEmpresa(Integer fkEmpresa) {
         Session.fkEmpresa = fkEmpresa;
     }
-    
-    
+
     public static void criarSessao(String nome, String email, Integer fkEmpresa) {
-        Session.nome = nome;
-        Session.email = email;
-        Session.fkEmpresa = fkEmpresa;
+        try {
+            Session.nome = nome;
+            Session.email = email;
+            Session.fkEmpresa = fkEmpresa;
+            Logger.escreverLogger("> Usuário autenticado.");
+        } catch (IOException e) {
+            Logger.loggerException(e);
+        }
     }
- 
-    public static void deletarSessao(){
-        Session.nome = null;
-        Session.email = null;
-        Session.fkEmpresa = null;
+
+    public static void deletarSessao() {
+        try {
+            Session.nome = null;
+            Session.email = null;
+            Session.fkEmpresa = null;
+            Logger.escreverLogger("Encerrou essa sessão.");
+        } catch (IOException e) {
+            Logger.loggerException(e);
+        }
     }
- 
+
 }

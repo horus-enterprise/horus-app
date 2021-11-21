@@ -6,10 +6,13 @@
 package br.com.horus.gui;
 
 
+import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
 import static br.com.horus.utils.Time.secondsToHHmmss;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.logging.Level;
 
 public class Home extends javax.swing.JFrame {
 
@@ -223,6 +226,11 @@ public class Home extends javax.swing.JFrame {
         Login obj = new Login();
         obj.setVisible(true);
         setVisible(false);
+        try {
+            Logger.fecharLogger();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

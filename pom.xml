@@ -25,7 +25,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>br.com.horus.gui.Login</mainClass>
+                            <mainClass>br.com.horus.main.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
