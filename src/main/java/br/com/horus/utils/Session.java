@@ -4,6 +4,19 @@ public class Session {
     private static String nome;
     private static String email;
     private static Integer fkEmpresa;
+    private static Integer uptime = 0;
+
+    public static Integer getUptime() {
+        return uptime;
+    }
+
+    public static void setUptime(Integer uptime) {
+        Session.uptime = uptime;
+    }
+
+    
+
+   
 
     public static String getNome() {
         return nome;

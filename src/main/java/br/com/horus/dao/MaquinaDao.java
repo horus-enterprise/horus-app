@@ -23,13 +23,12 @@ public class MaquinaDao extends Dao {
         List<Maquina> maquina = con.query(sql,
                 new BeanPropertyRowMapper(Maquina.class));
 
-        return maquina.get(0);
-
+        return maquina.isEmpty() ? null : maquina.get(0);
     }
 
     public Boolean validaMaquina() {
-        Maquina maquina = listar(Hostname.getHostname(),Session.getFkEmpresa());
-        
+        Maquina maquina = listar(Hostname.getHostname(), Session.getFkEmpresa());
+
         if (maquina != null) {
             System.out.println("validada");
             return true;
@@ -42,9 +41,12 @@ public class MaquinaDao extends Dao {
 
     public void cadastraMaquina() {
         Looca looca = new Looca();
-        String insertStatement = "insert into Maquina (idMaquina,hostname,fkEmpresa,nomeCpu,modeloDisco) values(null,?,?,?,?);";
-        con.update(insertStatement,Hostname.getHostname(),Session.getFkEmpresa(), looca.getProcessador().getNome(),
-                looca.getGrupoDeDiscos().getDiscos().get(0).getModelo());
+        Long memoriaRam = looca.getMemoria().getTotal();
+        Long tamanhoDisco = looca.getGrupoDeDiscos().getTamanhoTotal();
+        String insertStatement = "insert into Maquina (idMaquina,hostname,fkEmpresa,nomeCpu,modeloDisco,tamanhoDisco,tamanhoRam)"
+                + " values(null,?,?,?,?,?,?);";
+        con.update(insertStatement, Hostname.getHostname(), Session.getFkEmpresa(), looca.getProcessador().getNome(),
+                looca.getGrupoDeDiscos().getDiscos().get(0).getModelo(),tamanhoDisco,memoriaRam);
         System.out.println("Nova maquina cadastrada!");
     }
 

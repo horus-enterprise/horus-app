@@ -12,6 +12,8 @@ import br.com.horus.model.Funcionario;
 import java.util.Timer;
 import java.util.TimerTask;
 import br.com.horus.utils.Session;
+import static br.com.horus.utils.Time.secondsToHHmmss;
+
 
 /**
  *
@@ -309,7 +311,7 @@ public class Login extends javax.swing.JFrame {
             obj.setVisible(true);
             setVisible(false);
 
-            final long segundos = (1000 * 15);
+            final long segundos = (1000);
 
             Timer tempo = new Timer();
 
@@ -317,8 +319,13 @@ public class Login extends javax.swing.JFrame {
 
                 @Override
                 public void run() {
-
-                    start();
+                    Session.setUptime(Session.getUptime() + 1);
+                    System.out.println(secondsToHHmmss(Session.getUptime()));
+                    obj.atualizaUptime();
+                    if (Session.getUptime() % 15 == 0) {
+                        
+                        start();
+                    }
                 }
             };
 
@@ -334,9 +341,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        showMessageDialog(null,"Esse canal é para alteração da sua senha,\n "
+        showMessageDialog(null, "Esse canal é para alteração da sua senha,\n "
                 + "caso não lembre a senha antiga ou email entre em contato com o seu adiministrador!");
-        
+
         RedefinirSenha obj = new RedefinirSenha();
         obj.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -366,4 +373,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
 }

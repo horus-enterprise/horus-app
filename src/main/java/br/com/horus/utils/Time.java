@@ -1,10 +1,10 @@
 package br.com.horus.utils;
 
 public class Time {
-    public static String secondsToHHmmss(Long seconds) {
-        Long horas = seconds / 3600;
-        Long minutos = (seconds - (horas * 3600)) / 60;
-        Long segundos = seconds - (horas * 3600) - (minutos * 60);
+    public static String secondsToHHmmss(Integer seconds) {
+        Integer horas = seconds / 3600;
+        Integer minutos = (seconds - (horas * 3600)) / 60;
+        Integer segundos = seconds - (horas * 3600) - (minutos * 60);
         return String.format("%d:%d:%d", horas, minutos, segundos);
     }
 }

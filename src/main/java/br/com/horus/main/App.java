@@ -14,15 +14,12 @@ import com.github.britooo.looca.api.core.Looca;
 public class App {
 
     public static void main(String[] args) {
-        
-
         System.out.println("Iniciando...");
         Login login = new Login();
         login.setVisible(true);
     }
 
     public static void start() {
-                
         MaquinaDao maquinaDAO = new MaquinaDao();
 
         Maquina maquina = maquinaDAO.listar(Hostname.getHostname(),Session.getFkEmpresa());
@@ -54,7 +51,6 @@ public class App {
         System.out.println(ocorrencia);
 
         MonitoramentoHardwareDao monitoramentoHardwareDAO = new MonitoramentoHardwareDao();
-        monitoramentoHardwareDAO.enviar(ocorrencia);
-
+        monitoramentoHardwareDAO.enviar(ocorrencia);        
     }
 }

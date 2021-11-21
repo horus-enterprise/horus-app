@@ -6,6 +6,25 @@ public class Maquina {
     private String hostname;
     private String nomeCpu;
     private String modeloDisco;
+    private Double tamanhoDisco;
+    private Double tamanhoRam;
+
+    public Double getTamanhoDisco() {
+        return tamanhoDisco;
+    }
+
+    public void setTamanhoDisco(Double tamanhoDisco) {
+        this.tamanhoDisco = tamanhoDisco;
+    }
+
+    public Double getTamanhoRam() {
+        return tamanhoRam;
+    }
+
+    public void setTamanhoRam(Double tamanhoRam) {
+        this.tamanhoRam = tamanhoRam;
+    }
+    
 
     public String getNomeCpu() {
         return nomeCpu;
