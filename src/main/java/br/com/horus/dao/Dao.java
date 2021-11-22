@@ -11,10 +11,10 @@ public class Dao {
     public Dao() {
         try {
             this.dataSource = new BasicDataSource();
-            this.dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            this.dataSource.setUrl("jdbc:mysql://localhost:3306/horus?serverTimezone=UTC");
+            this.dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            this.dataSource.setUrl("jdbc:sqlserver://horusdb.database.windows.net:1433;database=Horus");
             this.dataSource.setUsername("horus");
-            this.dataSource.setPassword("@horus2021");
+            this.dataSource.setPassword("#Gfgrupo7");
             Logger.escreverLogger("> Conectado ao servidor.");
         } catch (IOException e) {
             Logger.loggerException(e);

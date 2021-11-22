@@ -50,8 +50,8 @@ public class MaquinaDao extends Dao {
             Looca looca = new Looca();
             Long memoriaRam = looca.getMemoria().getTotal();
             Long tamanhoDisco = looca.getGrupoDeDiscos().getTamanhoTotal();
-            String insertStatement = "insert into Maquina (idMaquina,hostname,fkEmpresa,nomeCpu,modeloDisco,tamanhoDisco,tamanhoRam)"
-                    + " values(null,?,?,?,?,?,?);";
+            String insertStatement = "insert into Maquina (hostname,fkEmpresa,nomeCpu,modeloDisco,tamanhoDisco,tamanhoRam)"
+                    + " values(?,?,?,?,?,?);";
             con.update(insertStatement, Hostname.getHostname(), Session.getFkEmpresa(), looca.getProcessador().getNome(),
                     looca.getGrupoDeDiscos().getDiscos().get(0).getModelo(), tamanhoDisco, memoriaRam);
             System.out.println("Nova maquina cadastrada!");

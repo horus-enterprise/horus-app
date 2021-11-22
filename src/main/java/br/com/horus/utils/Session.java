@@ -47,6 +47,7 @@ public class Session {
             Session.email = email;
             Session.fkEmpresa = fkEmpresa;
             Logger.escreverLogger("> Usuário autenticado.");
+            
         } catch (IOException e) {
             Logger.loggerException(e);
         }
