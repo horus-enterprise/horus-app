@@ -21,7 +21,7 @@ public class FuncionarioDao extends Dao {
         String sql = "";
         try {
             sql = "SELECT * FROM Funcionario WHERE email = ? AND senha = ?";
-            Logger.escreverLogger("> Select Funcionário ok.");
+           Logger.escreverLogger("> Select Funcionário ok. - " + Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }

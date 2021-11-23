@@ -24,11 +24,11 @@ public class Logger {
     static FileOutputStream arquivo;
     static String timeStamp;
     static Integer caminho;
-    
+
     public static void criarLogger() throws IOException {
         timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
         Looca looca = new Looca();
-     
+
         if (looca.getSistema().getSistemaOperacional().equals("Windows")) {
             File horus = new File("C:\\horus-loggers");
             if (!horus.exists()) {
@@ -36,8 +36,8 @@ public class Logger {
             }
             arquivo = new FileOutputStream("C:\\horus-loggers\\" + timeStamp + ".txt");
             caminho = 1;
-        } else if (looca.getSistema().getSistemaOperacional().equals("Linux") ||
-                looca.getSistema().getSistemaOperacional().equals("Ubuntu")) {
+        } else if (looca.getSistema().getSistemaOperacional().equals("Linux")
+                || looca.getSistema().getSistemaOperacional().equals("Ubuntu")) {
             File horus = new File("/home/urubu100/horus-loggers");
             if (!horus.exists()) {
                 horus.mkdirs();
@@ -77,5 +77,10 @@ public class Logger {
     public static void loggerException(IOException e) {
         throw new UnsupportedOperationException("Not supported yet." + e);
 //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static String geradorDatas() {
+        String dataFormatada = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+        return dataFormatada;
     }
 }

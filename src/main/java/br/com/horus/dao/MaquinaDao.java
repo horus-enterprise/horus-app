@@ -23,7 +23,7 @@ public class MaquinaDao extends Dao {
         try {
             sql = "SELECT * FROM Maquina WHERE hostname = '" + hostname
                     + "' AND fkEmpresa = " + fkEmpresa;
-            Logger.escreverLogger("Select da máquina ok.");
+            Logger.escreverLogger("Select da máquina ok. - "+ Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
@@ -55,7 +55,7 @@ public class MaquinaDao extends Dao {
             con.update(insertStatement, Hostname.getHostname(), Session.getFkEmpresa(), looca.getProcessador().getNome(),
                     looca.getGrupoDeDiscos().getDiscos().get(0).getModelo(), tamanhoDisco, memoriaRam);
             System.out.println("Nova maquina cadastrada!");
-            Logger.escreverLogger("> Nova máquina cadastrada.");
+            Logger.escreverLogger("> Nova máquina cadastrada. - " + Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
