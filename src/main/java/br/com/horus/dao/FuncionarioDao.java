@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.logging.Level;
 import static javax.swing.JOptionPane.showMessageDialog;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
@@ -21,15 +22,20 @@ public class FuncionarioDao extends Dao {
         String sql = "";
         try {
             sql = "SELECT * FROM Funcionario WHERE email = ? AND senha = ?";
-           Logger.escreverLogger("> Select Funcionário ok. - SELECT * FROM Funcionario WHERE email = ? AND senha = ? " + Logger.geradorDatas());
+            Logger.escreverLogger("> Select Funcionário ok. - " + Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
-        List<Funcionario> funcionario = con.query(sql,
+         List<Funcionario> funcionario = con.query(sql,
                 new BeanPropertyRowMapper(Funcionario.class), email, senha);
-        
+         
         if (funcionario.isEmpty()) {
             return null;
+        }
+        try {
+            Logger.escreverLogger("Funcionário: "+ funcionario.get(0).getNomeFuncionario()+" - "+ Logger.geradorDatas());
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(FuncionarioDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return funcionario.get(0);
     }
@@ -44,7 +50,7 @@ public class FuncionarioDao extends Dao {
                 showMessageDialog(null, "Os dados informados estão incorreto!\n"
                         + "Verifique e tente novamente ou contate seu adiministrador.");
             }
-            Logger.escreverLogger("Redefinir senha.");
+            Logger.escreverLogger("O funcionário: "+ funcionario.getNomeFuncionario()+"Redefiniu a senha. - "+Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
