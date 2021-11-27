@@ -31,7 +31,7 @@ public class MaquinaDao extends Dao {
         List<Maquina> maquina = con.query(sql,
                 new BeanPropertyRowMapper(Maquina.class));
         try {
-            Logger.escreverLogger("Nome da máquina: "+maquina.get(0).getHostname()+" ok. -"+ Logger.geradorDatas());
+            Logger.escreverLogger("Nome da máquina: "+ Hostname.getHostname() +" ok. -"+ Logger.geradorDatas());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(MaquinaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -54,8 +54,8 @@ public class MaquinaDao extends Dao {
     public void cadastraMaquina() {
         try {
             Looca looca = new Looca();
-            Long memoriaRam = looca.getMemoria().getTotal();
-            Long tamanhoDisco = looca.getGrupoDeDiscos().getTamanhoTotal();
+            Double memoriaRam = looca.getMemoria().getTotal()/ Math.pow(1024, 3);
+            Double tamanhoDisco = looca.getGrupoDeDiscos().getTamanhoTotal() / Math.pow(1024, 3);
             String insertStatement = "insert into Maquina (hostname,fkEmpresa,nomeCpu,modeloDisco,tamanhoDisco,tamanhoRam)"
                     + " values(?,?,?,?,?,?);";
             con.update(insertStatement, Hostname.getHostname(), Session.getFkEmpresa(), looca.getProcessador().getNome(),

@@ -298,6 +298,7 @@ public class Login extends javax.swing.JFrame {
                     funcionario.getNomeFuncionario(),
                     funcionario.getEmail(),
                     funcionario.getFkEmpresa()
+                            
             );
 
             maquinaDAO.validaMaquina();

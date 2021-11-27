@@ -40,9 +40,9 @@ public class App {
 
         ocorrencia.setCpuTemperatura(looca.getTemperatura().getTemperatura());
 
-        Long volumeTotal = looca.getGrupoDeDiscos().getVolumes().get(0).getTotal();
-        Long volumeDisponivel = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel();
-        Long volumeUso = volumeTotal - volumeDisponivel;
+        Double volumeTotal = looca.getGrupoDeDiscos().getVolumes().get(0).getTotal()/ Math.pow(1024, 3);
+        Double volumeDisponivel = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel()/ Math.pow(1024, 3);
+        Double volumeUso = volumeTotal - volumeDisponivel;
 
         Double percentVolumeUso = volumeUso * 100.0 / volumeTotal;
 

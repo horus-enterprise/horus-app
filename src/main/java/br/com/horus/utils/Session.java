@@ -9,6 +9,7 @@ public class Session {
     private static Integer fkEmpresa;
     private static Integer uptime = 0;
 
+    
     public static Integer getUptime() {
         return uptime;
     }
