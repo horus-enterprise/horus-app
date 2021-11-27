@@ -8,7 +8,7 @@ public class Session {
     private static String email;
     private static Integer fkEmpresa;
     private static Integer uptime = 0;
-
+    private static String sessaoJson;
     
     public static Integer getUptime() {
         return uptime;
@@ -41,6 +41,16 @@ public class Session {
     public static void setFkEmpresa(Integer fkEmpresa) {
         Session.fkEmpresa = fkEmpresa;
     }
+
+    public static String getSessaoJson() {
+        return sessaoJson;
+    }
+
+    public static void setSessaoJson(String sessaoJson) {
+        Session.sessaoJson = sessaoJson;
+    }
+    
+    
 
     public static void criarSessao(String nome, String email, Integer fkEmpresa) {
         try {

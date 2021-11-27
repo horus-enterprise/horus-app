@@ -22,67 +22,76 @@ import java.util.Calendar;
 public class Logger {
 
     static FileOutputStream arquivo;
+    static FileOutputStream sessaoJson;
     static String timeStamp;
     static Integer caminho;
 
+    public static void criaCaminho() throws IOException {
+        File horusSessao = new File("D:\\horus-sessao");
+        File horus = new File("D:\\horus-loggers");
+        if (!horus.exists()) {
+            horus.mkdirs();
+        }
+        if (!horusSessao.exists()) {
+            horusSessao.mkdirs();
+        }
+
+        sessaoJson = new FileOutputStream("D:\\horus-loggers\\" + Session.getNome() + ".txt");
+        arquivo = new FileOutputStream("D:\\horus-sessao\\" + timeStamp + ".txt");
+        caminho = 1;
+    }
+
     public static void criarLogger() throws IOException {
-        timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
         Looca looca = new Looca();
 
         if (looca.getSistema().getSistemaOperacional().equals("Windows")) {
-            File horus = new File("D:\\horus-loggers");
-            if (!horus.exists()) {
-                horus.mkdirs();
-            }
-            arquivo = new FileOutputStream("D:\\horus-loggers\\" + timeStamp + ".txt");
+            criaCaminho();
             caminho = 1;
         } else if (looca.getSistema().getSistemaOperacional().equals("Windows") && arquivo == null) {
-            File horus = new File("C:\\horus-loggers");
-            if (!horus.exists()) {
-                horus.mkdirs();
-            }
-            arquivo = new FileOutputStream("C:\\horus-loggers\\" + timeStamp + ".txt");
+            criaCaminho();
             caminho = 2;
         } else if (looca.getSistema().getSistemaOperacional().equals("Linux")
                 || looca.getSistema().getSistemaOperacional().equals("Ubuntu")) {
-            File horus = new File("/home/horus-loggers");
-            if (!horus.exists()) {
-                horus.mkdirs();
-            }
-            arquivo = new FileOutputStream("/home/horus-loggers/" + timeStamp + ".txt");
+            criaCaminho();
             caminho = 3;
         } else {
             System.out.println("Não temos suporte para esse sistema operacional.");
         }
     }
+    
+    public static void escreverArquivo(){
+       switch(caminho){
+           case 1 :
+               break;
+           
+           default:
+               break;
+       }
+                 
+    }
 
     public static void escreverLogger(String texto) throws IOException {
         if (caminho == 1) {
             try (
-                     FileWriter caminhoTxt = new FileWriter("D:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  
-                     BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  
-                     PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
-                     escreverTexto.println(texto);
+                     FileWriter caminhoTxt = new FileWriter("D:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
+                escreverTexto.println(texto);
 
             } catch (IOException e) {
                 Logger.loggerException(e);
             }
         } else if (caminho == 2) {
             try (
-                   FileWriter caminhoTxt = new FileWriter("C:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  
-                   BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  
-                   PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
-                   escreverTexto.println(texto);
+                     FileWriter caminhoTxt = new FileWriter("C:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
+                escreverTexto.println(texto);
 
             } catch (IOException e) {
                 Logger.loggerException(e);
             }
         } else if (caminho == 3) {
             try (
-                   FileWriter caminhoTxt = new FileWriter("/home/urubu100/horus-loggers/" + timeStamp + ".txt", true);  
-                   BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  
-                   PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
-                   escreverTexto.println(texto);
+                     FileWriter caminhoTxt = new FileWriter("/home/urubu100/horus-loggers/" + timeStamp + ".txt", true);  BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
+                escreverTexto.println(texto);
             } catch (IOException e) {
                 Logger.loggerException(e);
             }
