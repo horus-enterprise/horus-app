@@ -31,7 +31,7 @@ public class MaquinaDao extends Dao {
         List<Maquina> maquina = con.query(sql,
                 new BeanPropertyRowMapper(Maquina.class));
         try {
-            Logger.escreverLogger("Nome da máquina: "+ Hostname.getHostname() + " ok. -"+ Logger.geradorDatas());
+            Logger.escreverLogger("Nome da máquina: "+ Hostname.getHostname() +" ok. -"+ Logger.geradorDatas());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(MaquinaDao.class.getName()).log(Level.SEVERE, null, ex);
         }

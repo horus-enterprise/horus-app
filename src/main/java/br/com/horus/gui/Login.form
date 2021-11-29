@@ -259,17 +259,11 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="exemplo@horus.com"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtSenha">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jPasswordField1"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel5">
               <Properties>
