@@ -8,12 +8,16 @@ package br.com.horus.utils;
 import com.github.britooo.looca.api.core.Looca;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import org.json.JSONObject;
 
 /**
  *
@@ -56,33 +60,43 @@ public class Logger {
         }
     }
 
+    public static void criarJson() throws FileNotFoundException, UnsupportedEncodingException {
+        String caminho = String.format("C:\\Users\\%s\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\horus-web-monitor",System.getProperty("user.name"));
+        JSONObject json = new JSONObject();
+        json.put("idFuncionario", Session.getIdFuncionario());
+        json.put("idMaquina", Session.getIdMaquina());
+
+        File horus = new File(caminho);
+        if (!horus.exists()) {
+            horus.mkdirs();
+        }
+
+        PrintWriter writer = new PrintWriter(caminho + "\\data.json", "UTF-8");
+        writer.println(json);
+        writer.close();
+    }
+
     public static void escreverLogger(String texto) throws IOException {
         if (caminho == 1) {
             try (
-                     FileWriter caminhoTxt = new FileWriter("D:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  
-                     BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  
-                     PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
-                     escreverTexto.println(texto);
+                     FileWriter caminhoTxt = new FileWriter("D:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
+                escreverTexto.println(texto);
 
             } catch (IOException e) {
                 Logger.loggerException(e);
             }
         } else if (caminho == 2) {
             try (
-                   FileWriter caminhoTxt = new FileWriter("C:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  
-                   BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  
-                   PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
-                   escreverTexto.println(texto);
+                     FileWriter caminhoTxt = new FileWriter("C:\\" + "horus-loggers\\" + timeStamp + ".txt", true);  BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
+                escreverTexto.println(texto);
 
             } catch (IOException e) {
                 Logger.loggerException(e);
             }
         } else if (caminho == 3) {
             try (
-                   FileWriter caminhoTxt = new FileWriter("/home/urubu100/horus-loggers/" + timeStamp + ".txt", true);  
-                   BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  
-                   PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
-                   escreverTexto.println(texto);
+                     FileWriter caminhoTxt = new FileWriter("/home/urubu100/horus-loggers/" + timeStamp + ".txt", true);  BufferedWriter loopEscrever = new BufferedWriter(caminhoTxt);  PrintWriter escreverTexto = new PrintWriter(loopEscrever)) {
+                escreverTexto.println(texto);
             } catch (IOException e) {
                 Logger.loggerException(e);
             }
@@ -97,7 +111,6 @@ public class Logger {
 
     public static void loggerException(IOException e) {
         throw new UnsupportedOperationException("Not supported yet." + e);
-//To change body of generated methods, choose Tools | Templates.
     }
 
     public static String geradorDatas() {
