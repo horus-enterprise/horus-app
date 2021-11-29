@@ -61,7 +61,15 @@ public class Logger {
     }
 
     public static void criarJson() throws FileNotFoundException, UnsupportedEncodingException {
-        String caminho = String.format("C:\\Users\\%s\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\horus-web-monitor",System.getProperty("user.name"));
+        
+        String caminho = null; 
+        if(System.getProperty("os.name").startsWith("Windows")){
+            caminho = String.format("C:\\Users\\%s\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\horus-web-monitor",System.getProperty("user.name"));
+        }else if(System.getProperty("os.name").startsWith("Linux")){
+            caminho = String.format("~/.config/google-chrome/Default/Extensions/");
+        }
+        
+        
         JSONObject json = new JSONObject();
         json.put("idFuncionario", Session.getIdFuncionario());
         json.put("idMaquina", Session.getIdMaquina());
@@ -70,7 +78,6 @@ public class Logger {
         if (!horus.exists()) {
             horus.mkdirs();
         }
-
         PrintWriter writer = new PrintWriter(caminho + "\\data.json", "UTF-8");
         writer.println(json);
         writer.close();
