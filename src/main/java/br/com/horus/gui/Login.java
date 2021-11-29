@@ -9,6 +9,8 @@ import br.com.horus.dao.FuncionarioDao;
 import br.com.horus.dao.MaquinaDao;
 import static br.com.horus.main.App.start;
 import br.com.horus.model.Funcionario;
+import br.com.horus.model.Maquina;
+import br.com.horus.utils.Hostname;
 import java.util.Timer;
 import java.util.TimerTask;
 import br.com.horus.utils.Session;
@@ -292,48 +294,49 @@ public class Login extends javax.swing.JFrame {
 
         Funcionario funcionario = funcionarioDAO.listar(email, senha);
 
-        if (funcionario != null) {
-
-            Session.criarSessao(
-                    funcionario.getNomeFuncionario(),
-                    funcionario.getEmail(),
-                    funcionario.getFkEmpresa()
-                            
-            );
-
-            maquinaDAO.validaMaquina();
-
-            Home obj = new Home();
-            obj.setVisible(true);
-            setVisible(false);
-
-            final long segundos = (1000);
-
-            Timer tempo = new Timer();
-
-            TimerTask monitoramento = new TimerTask() {
-
-                @Override
-                public void run() {
-                    Session.setUptime(Session.getUptime() + 1);
-                    System.out.println(secondsToHHmmss(Session.getUptime()));
-                    obj.atualizaUptime();
-                    if (Session.getUptime() % 15 == 0) {
-
-                        start();
-                    }
-                }
-            };
-
-            tempo.scheduleAtFixedRate(monitoramento, 1, segundos);
-
-        } else {
+        if (funcionario == null) {
             showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
+            return;
         }
+
+        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(), funcionario.getFkEmpresa());
+
+        Session.criarSessao(
+                funcionario.getNomeFuncionario(),
+                funcionario.getEmail(),
+                funcionario.getFkEmpresa(),
+                funcionario.getIdFuncionario(),
+                maquina.getIdMaquina()
+        );
+
+        maquinaDAO.validaMaquina();
+
+        Home obj = new Home();
+        obj.setVisible(true);
+        setVisible(false);
+
+        final long segundos = (1000);
+
+        Timer tempo = new Timer();
+
+        TimerTask monitoramento = new TimerTask() {
+
+            @Override
+            public void run() {
+                Session.setUptime(Session.getUptime() + 1);
+                System.out.println(secondsToHHmmss(Session.getUptime()));
+                obj.atualizaUptime();
+                if (Session.getUptime() % 15 == 0) {
+                    start();
+                }
+            }
+        };
+
+        tempo.scheduleAtFixedRate(monitoramento, 1, segundos);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -367,8 +370,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JPasswordField txtSenha;
+    public static javax.swing.JTextField txtEmail;
+    public static javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
 }

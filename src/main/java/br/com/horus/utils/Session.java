@@ -8,8 +8,25 @@ public class Session {
     private static String email;
     private static Integer fkEmpresa;
     private static Integer uptime = 0;
-    private static String sessaoJson;
-    
+    private static Integer idFuncionario;
+    private static Integer idMaquina;
+
+    public static Integer getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public static void setIdFuncionario(Integer idFuncionario) {
+        Session.idFuncionario = idFuncionario;
+    }
+
+    public static Integer getIdMaquina() {
+        return idMaquina;
+    }
+
+    public static void setIdMaquina(Integer idMaquina) {
+        Session.idMaquina = idMaquina;
+    }
+
     public static Integer getUptime() {
         return uptime;
     }
@@ -42,26 +59,21 @@ public class Session {
         Session.fkEmpresa = fkEmpresa;
     }
 
-    public static String getSessaoJson() {
-        return sessaoJson;
-    }
-
-    public static void setSessaoJson(String sessaoJson) {
-        Session.sessaoJson = sessaoJson;
-    }
-    
-    
-
-    public static void criarSessao(String nome, String email, Integer fkEmpresa) {
+    public static void criarSessao(String nome, String email, Integer fkEmpresa, Integer idFuncionario, Integer idMaquina) {
         try {
+            Session.idFuncionario = idFuncionario;
+            Session.idMaquina = idMaquina;
             Session.nome = nome;
             Session.email = email;
             Session.fkEmpresa = fkEmpresa;
             Logger.escreverLogger("> Usuário autenticado.");
-            
+
+            Logger.criarJson();
+
         } catch (IOException e) {
             Logger.loggerException(e);
         }
+
     }
 
     public static void deletarSessao() {
@@ -69,6 +81,8 @@ public class Session {
             Session.nome = null;
             Session.email = null;
             Session.fkEmpresa = null;
+            Session.idFuncionario = null;
+            Session.idMaquina = null;
             Logger.escreverLogger("Encerrou essa sessão.");
         } catch (IOException e) {
             Logger.loggerException(e);
