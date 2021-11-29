@@ -5,6 +5,8 @@
  */
 package br.com.horus.utils;
 
+import br.com.horus.model.Funcionario;
+import br.com.horus.model.MonitoramentoHardware;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -27,8 +29,69 @@ public class Slack {
                 .header("accept", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
                 .build();
-        
+
         HttpResponse<String> response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
+    public static void enviarAlerta(MonitoramentoHardware m) throws IOException, InterruptedException {
+        String hostname = Hostname.getHostname();
+        String nomeFuncionario = Session.getNome();
+        String mensagem;
+        String componente;
+        Double porcentagemUso;
+
+        if (m.getCpuUso() >= 75.0) {
+            componente = "da CPU";
+            porcentagemUso = m.getCpuUso();
+
+            if (m.getCpuUso() >= 90.0) {
+                mensagem = String.format("!Alerta Critico! A máquina %s que está sendo operada por %s, esta em estado critico %s  %Uso : %.1f",
+                        hostname, nomeFuncionario, componente, porcentagemUso);
+            } else {
+                mensagem = String.format("!Alerta Emergencial! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável %s  %Uso : %.1f",
+                        hostname, nomeFuncionario, componente, porcentagemUso);
+
+                JSONObject json = new JSONObject();
+                json.put("texto", mensagem);
+
+                sendMessage(json);
+            }
+        }
+
+        if (m.getDisco() >= 75.0) {
+            componente = "do Disco";
+            porcentagemUso = m.getDisco();
+
+            if (m.getDisco() >= 90.0) {
+                mensagem = String.format("!Alerta Critico! A máquina %s que está sendo operada por %s, esta em estado critico %s  %Uso : %.1f",
+                        hostname, nomeFuncionario, componente, porcentagemUso);
+            } else {
+                mensagem = String.format("!Alerta Emergencial! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável %s  %Uso : %.1f",
+                        hostname, nomeFuncionario, componente, porcentagemUso);
+
+                JSONObject json = new JSONObject();
+                json.put("texto", mensagem);
+
+                sendMessage(json);
+            }
+        }
+
+        if (m.getRam() >= 75.0) {
+            componente = "da memória Ram";
+            porcentagemUso = m.getRam();
+
+            if (m.getDisco() >= 90.0) {
+                mensagem = String.format("!Alerta Critico! A máquina %s que está sendo operada por %s, esta em estado critico %s  %Uso : %.1f",
+                        hostname, nomeFuncionario, componente, porcentagemUso);
+            } else {
+                mensagem = String.format("!Alerta Emergencial! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável %s  %Uso : %.1f",
+                        hostname, nomeFuncionario, componente, porcentagemUso);
+
+                JSONObject json = new JSONObject();
+                json.put("texto", mensagem);
+
+                sendMessage(json);
+            }
+        }
+    }
 }

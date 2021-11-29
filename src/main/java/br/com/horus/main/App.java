@@ -8,6 +8,7 @@ import br.com.horus.model.MonitoramentoHardware;
 import br.com.horus.utils.Hostname;
 import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
+import br.com.horus.utils.Slack;
 import com.github.britooo.looca.api.core.Looca;
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class App {
         login.setVisible(true);
     }
 
-    public static void start() {
+    public static void start() throws IOException, InterruptedException {
         MaquinaDao maquinaDAO = new MaquinaDao();
 
         Maquina maquina = maquinaDAO.listar(Hostname.getHostname(),Session.getFkEmpresa());
@@ -54,7 +55,10 @@ public class App {
 
         System.out.println(ocorrencia);
 
+        
         MonitoramentoHardwareDao monitoramentoHardwareDAO = new MonitoramentoHardwareDao();
         monitoramentoHardwareDAO.enviar(ocorrencia);        
+        
+        Slack.enviarAlerta(ocorrencia);
     }
 }
