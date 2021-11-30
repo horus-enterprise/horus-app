@@ -5,10 +5,10 @@ import br.com.horus.dao.MonitoramentoHardwareDao;
 import br.com.horus.gui.Login;
 import br.com.horus.model.Maquina;
 import br.com.horus.model.MonitoramentoHardware;
+import br.com.horus.utils.ConexaoSlack;
 import br.com.horus.utils.Hostname;
 import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
-import br.com.horus.utils.Slack;
 import com.github.britooo.looca.api.core.Looca;
 import java.io.IOException;
 
@@ -17,11 +17,12 @@ import java.io.IOException;
 public class App {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException{
         Logger.criarLogger();
         System.out.println("Iniciando...");
         Login login = new Login();
         login.setVisible(true);
+        ConexaoSlack.mensagemInicial();
     }
 
     public static void start() throws IOException, InterruptedException {
@@ -46,10 +47,16 @@ public class App {
         Double volumeUso = volumeTotal - volumeDisponivel;
 
         Double percentVolumeUso = volumeUso * 100.0 / volumeTotal;
+        ocorrencia.setDisco(percentVolumeUso); 
+        
+        
+        Double totalRam = looca.getMemoria().getTotal()/ Math.pow(1024, 3);
+        Double ramEmUso = looca.getMemoria().getEmUso()/ Math.pow(1024, 3);
+        
+        Double usoRam = ((ramEmUso * 100) / totalRam);       
+        ocorrencia.setRam(usoRam);
 
-        ocorrencia.setDisco(percentVolumeUso);
-        ocorrencia.setRam(looca.getMemoria().getEmUso() / Math.pow(1024, 3));
-
+        
         Long uptime = looca.getSistema().getTempoDeAtividade();
         ocorrencia.setUptime(uptime);
 
@@ -57,8 +64,6 @@ public class App {
 
         
         MonitoramentoHardwareDao monitoramentoHardwareDAO = new MonitoramentoHardwareDao();
-        monitoramentoHardwareDAO.enviar(ocorrencia);        
-        
-        Slack.enviarAlerta(ocorrencia);
+        monitoramentoHardwareDAO.enviar(ocorrencia);       
     }
 }

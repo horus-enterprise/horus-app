@@ -63,7 +63,7 @@ public class Logger {
         
         String caminho = null; 
         if(System.getProperty("os.name").startsWith("Windows")){
-            caminho = String.format("C:\\Users\\%s\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\horus-web-monitor",System.getProperty("user.name"));
+            caminho = String.format("%s\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\horus-web-monitor",System.getProperty("user.home"));
         }else if(System.getProperty("os.name").startsWith("Linux")){
             caminho = String.format("~/.config/google-chrome/Default/Extensions/");
         }

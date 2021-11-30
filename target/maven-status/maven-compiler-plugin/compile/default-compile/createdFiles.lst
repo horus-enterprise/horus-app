@@ -5,10 +5,11 @@ br\com\horus\gui\Login$2.class
 br\com\horus\gui\Home.class
 br\com\horus\gui\Login$4.class
 br\com\horus\gui\Home$1.class
+br\com\horus\utils\ConexaoSlack.class
 br\com\horus\dao\Dao.class
 br\com\horus\utils\Time.class
 br\com\horus\gui\Login$1.class
-br\com\horus\utils\Slack.class
+br\com\horus\dao\SlackDao.class
 br\com\horus\gui\Login.class
 br\com\horus\model\Maquina.class
 br\com\horus\main\Teste.class
@@ -20,6 +21,7 @@ br\com\horus\gui\Login$3.class
 br\com\horus\dao\FuncionarioDao.class
 br\com\horus\model\MonitoramentoHardware.class
 br\com\horus\model\MonitoramentoWeb.class
+br\com\horus\model\Slack.class
 br\com\horus\gui\RedefinirSenha.class
 br\com\horus\gui\RedefinirSenha$1.class
 br\com\horus\model\Funcionario.class
