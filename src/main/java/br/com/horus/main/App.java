@@ -12,8 +12,6 @@ import br.com.horus.utils.Session;
 import com.github.britooo.looca.api.core.Looca;
 import java.io.IOException;
 
-
-
 public class App {
 
 
