@@ -12,7 +12,6 @@ br\com\horus\gui\Login$1.class
 br\com\horus\dao\SlackDao.class
 br\com\horus\gui\Login.class
 br\com\horus\model\Maquina.class
-br\com\horus\main\Teste.class
 br\com\horus\main\App.class
 br\com\horus\utils\Hostname.class
 br\com\horus\dao\MaquinaDao.class

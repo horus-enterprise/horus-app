@@ -83,6 +83,7 @@ public class Session {
             Session.fkEmpresa = null;
             Session.idFuncionario = null;
             Session.idMaquina = null;
+            Logger.criarJson();
             Logger.escreverLogger("Encerrou essa sessão.");
         } catch (IOException e) {
             Logger.loggerException(e);

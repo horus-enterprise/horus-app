@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author Anderson
@@ -316,7 +317,8 @@ public class Login extends javax.swing.JFrame {
         Home obj = new Home();
         obj.setVisible(true);
         setVisible(false);
-
+        
+        
         final long segundos = (1000);
 
         Timer tempo = new Timer();
