@@ -20,8 +20,8 @@ import org.json.JSONObject;
  */
 public class Slack {
 
-    private static final HttpClient cliente = HttpClient.newHttpClient();
-    private static final String URL = "https://hooks.slack.com/services/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";
+    private static HttpClient cliente = HttpClient.newHttpClient();
+    private static final String URL = "https://hooks.slack.com/services/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";
 
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder(
@@ -29,8 +29,10 @@ public class Slack {
                 .header("accept", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
                 .build();
-
         HttpResponse<String> response = cliente.send(request, HttpResponse.BodyHandlers.ofString());
+        
+        System.out.println(String.format("Status: %s", response.statusCode()));
+        System.out.println(String.format("Response: %s", response.body()));
     }
 
     public static void enviarAlerta(MonitoramentoHardware m) throws IOException, InterruptedException {
@@ -52,7 +54,7 @@ public class Slack {
                         hostname, nomeFuncionario, componente, porcentagemUso);
 
                 JSONObject json = new JSONObject();
-                json.put("texto", mensagem);
+                json.put("text", mensagem);
 
                 sendMessage(json);
             }
@@ -70,7 +72,7 @@ public class Slack {
                         hostname, nomeFuncionario, componente, porcentagemUso);
 
                 JSONObject json = new JSONObject();
-                json.put("texto", mensagem);
+                json.put("text", mensagem);
 
                 sendMessage(json);
             }
@@ -88,7 +90,7 @@ public class Slack {
                         hostname, nomeFuncionario, componente, porcentagemUso);
 
                 JSONObject json = new JSONObject();
-                json.put("texto", mensagem);
+                json.put("text", mensagem);
 
                 sendMessage(json);
             }
