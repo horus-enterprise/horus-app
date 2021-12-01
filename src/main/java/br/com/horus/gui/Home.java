@@ -25,6 +25,7 @@ public class Home extends javax.swing.JFrame {
         Date data = new Date();
         DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT); 
         txtData.setText(formatador.format(data));
+        
     }
 
     public void atualizaUptime() {
@@ -220,13 +221,11 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
-        Session.deletarSessao();
-
         Login obj = new Login();
         obj.setVisible(true);
         setVisible(false);
         try {
+            Session.deletarSessao();
             Logger.fecharLogger();
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);

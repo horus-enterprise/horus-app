@@ -301,22 +301,23 @@ public class Login extends javax.swing.JFrame {
             showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
             return;
         }
-
-        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(), funcionario.getFkEmpresa());
-
+        
         Session.criarSessao(
                 funcionario.getNomeFuncionario(),
                 funcionario.getEmail(),
                 funcionario.getFkEmpresa(),
-                funcionario.getIdFuncionario(),
-                maquina.getIdMaquina()
+                funcionario.getIdFuncionario() 
         );
+        
+       
+        System.out.println(Session.getFkEmpresa());
 
         maquinaDAO.validaMaquina();
 
         Home obj = new Home();
         obj.setVisible(true);
         setVisible(false);
+        
         
         
         final long segundos = (1000);

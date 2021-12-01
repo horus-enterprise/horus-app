@@ -24,14 +24,14 @@ public class MaquinaDao extends Dao {
         try {
             sql = "SELECT * FROM Maquina WHERE hostname = '" + hostname
                     + "' AND fkEmpresa = " + fkEmpresa;
-             Logger.escreverLogger("Select da máquina ok. - "+ Logger.geradorDatas());
+            Logger.escreverLogger("Select da máquina ok. - " + Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
         List<Maquina> maquina = con.query(sql,
                 new BeanPropertyRowMapper(Maquina.class));
         try {
-            Logger.escreverLogger("Nome da máquina: "+ Hostname.getHostname() + " ok. -"+ Logger.geradorDatas());
+            Logger.escreverLogger("Nome da máquina: " + Hostname.getHostname() + " ok. -" + Logger.geradorDatas());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(MaquinaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,7 +52,7 @@ public class MaquinaDao extends Dao {
     }
 
     public void cadastraMaquina() {
-        try {
+         try {
             Looca looca = new Looca();
             Double memoriaRam = looca.getMemoria().getTotal()/ Math.pow(1024, 3);
             Double tamanhoDisco = looca.getGrupoDeDiscos().getTamanhoTotal() / Math.pow(1024, 3);
