@@ -16,8 +16,7 @@ import java.util.TimerTask;
 import br.com.horus.utils.Session;
 import static br.com.horus.utils.Time.secondsToHHmmss;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import br.com.horus.utils.Logger;
 
 
 /**
@@ -291,6 +290,8 @@ public class Login extends javax.swing.JFrame {
         String email, senha;
         email = txtEmail.getText();
         senha = txtSenha.getText();
+        
+        
 
         FuncionarioDao funcionarioDAO = new FuncionarioDao();
         MaquinaDao maquinaDAO = new MaquinaDao();
@@ -302,17 +303,29 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         
+      
+        
         Session.criarSessao(
                 funcionario.getNomeFuncionario(),
                 funcionario.getEmail(),
                 funcionario.getFkEmpresa(),
-                funcionario.getIdFuncionario() 
+                funcionario.getIdFuncionario()
         );
         
        
         System.out.println(Session.getFkEmpresa());
 
         maquinaDAO.validaMaquina();
+        
+        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(),Session.getFkEmpresa());
+        
+        Session.setIdMaquina(maquina.getIdMaquina());
+        
+        try {
+            
+        Logger.criarJson();
+        } catch (Exception e) {
+        }
 
         Home obj = new Home();
         obj.setVisible(true);
@@ -336,7 +349,7 @@ public class Login extends javax.swing.JFrame {
                     try {
                         start();
                     } catch (IOException | InterruptedException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        
                     }
                 }
             }

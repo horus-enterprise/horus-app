@@ -62,7 +62,7 @@ public class Logger {
         
         JSONObject json = new JSONObject();
         json.put("idFuncionario", Session.getIdFuncionario());
-        //json.put("idMaquina", idmaquina);
+        json.put("idMaquina", Session.getIdMaquina());
 
         File horus = new File(caminho);
         if (!horus.exists()) {

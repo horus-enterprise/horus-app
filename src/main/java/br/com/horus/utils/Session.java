@@ -9,6 +9,15 @@ public class Session {
     private static Integer fkEmpresa;
     private static Integer uptime = 0;
     private static Integer idFuncionario;
+    private static Integer idMaquina;
+
+    public static Integer getIdMaquina() {
+        return idMaquina;
+    }
+
+    public static void setIdMaquina(Integer idMaquina) {
+        Session.idMaquina = idMaquina;
+    }
 
 
     public static Integer getIdFuncionario() {
@@ -52,18 +61,20 @@ public class Session {
     }
 
     public static void criarSessao(String nome, String email, Integer fkEmpresa, Integer idFuncionario) {
+        
 
         try {
             Session.nome = nome;
             Session.email = email;
             Session.fkEmpresa = fkEmpresa;
             Session.idFuncionario = idFuncionario;
+       
 
             Logger.escreverLogger("> Usuário autenticado.");
 
             System.out.println("Sessão validada");
            
-            Logger.criarJson();
+            
             System.out.println("json atualizado");
            
         } catch (IOException e) {
