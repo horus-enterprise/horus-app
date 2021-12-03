@@ -2,9 +2,11 @@ package br.com.horus.main;
 
 import br.com.horus.dao.MaquinaDao;
 import br.com.horus.dao.MonitoramentoHardwareDao;
+import br.com.horus.dao.SlackDao;
 import br.com.horus.gui.Login;
 import br.com.horus.model.Maquina;
 import br.com.horus.model.MonitoramentoHardware;
+import br.com.horus.model.Slack;
 import br.com.horus.utils.ConexaoSlack;
 import br.com.horus.utils.Hostname;
 import br.com.horus.utils.Logger;
@@ -20,7 +22,10 @@ public class App {
         System.out.println("Iniciando...");
         Login login = new Login();
         login.setVisible(true);
-        ConexaoSlack.mensagemInicial();
+        
+        SlackDao s = new SlackDao(); 
+        Slack slk = s.listar(1);
+        ConexaoSlack.setURL(slk.getUrlSlack());       
     }
 
     public static void start() throws IOException, InterruptedException {

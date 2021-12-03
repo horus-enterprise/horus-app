@@ -7,7 +7,6 @@ package br.com.horus.utils;
 
 import br.com.horus.dao.SlackDao;
 import br.com.horus.model.MonitoramentoHardware;
-import br.com.horus.model.Slack;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -22,9 +21,10 @@ import org.json.JSONObject;
 public class ConexaoSlack {
 
     private static HttpClient cliente = HttpClient.newHttpClient();
-    private static String URL = "https://hooks.slack.com/services/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";
+    private static String URL = "";
 
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
+
         HttpRequest request = HttpRequest.newBuilder(
                 URI.create(URL))
                 .header("accept", "application/json")
@@ -37,11 +37,8 @@ public class ConexaoSlack {
     }
 
     public static void enviarAlerta(MonitoramentoHardware m) throws IOException, InterruptedException {
-        Slack slack = new Slack();
-        SlackDao slackDAO = new SlackDao();
-
-        slack = slackDAO.listar(Session.getFkEmpresa());
-        URL = slack.getUrl();
+        SlackDao s = new SlackDao();
+        s.listar(Integer.BYTES);
 
         String hostname = Hostname.getHostname();
         String nomeFuncionario = Session.getNome();
@@ -105,10 +102,17 @@ public class ConexaoSlack {
     }
 
     public static void mensagemInicial() throws IOException, InterruptedException {
-        String mensagemInicial = String.format("Iniciando monitoramento da maquina %s ",Hostname.getHostname() );
+        String mensagemInicial = String.format("Iniciando monitoramento da maquina << %s >> que esta sendo operada pelo proficional %s",
+                Hostname.getHostname(), Session.getNome());
         JSONObject json = new JSONObject();
 
         json.put("text", mensagemInicial);
         sendMessage(json);
+    }
+
+    
+    
+    public static void setURL(String URL) {
+        ConexaoSlack.URL = URL;
     }
 }

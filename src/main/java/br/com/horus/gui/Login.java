@@ -10,6 +10,7 @@ import br.com.horus.dao.MaquinaDao;
 import static br.com.horus.main.App.start;
 import br.com.horus.model.Funcionario;
 import br.com.horus.model.Maquina;
+import br.com.horus.utils.ConexaoSlack;
 import br.com.horus.utils.Hostname;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,6 +18,7 @@ import br.com.horus.utils.Session;
 import static br.com.horus.utils.Time.secondsToHHmmss;
 import java.io.IOException;
 import br.com.horus.utils.Logger;
+import java.util.logging.Level;
 
 
 /**
@@ -324,13 +326,14 @@ public class Login extends javax.swing.JFrame {
         try {
             
         Logger.criarJson();
+        ConexaoSlack.mensagemInicial();
         } catch (Exception e) {
         }
+        
 
         Home obj = new Home();
         obj.setVisible(true);
         setVisible(false);
-        
         
         
         final long segundos = (1000);

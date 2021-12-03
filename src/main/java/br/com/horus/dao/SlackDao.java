@@ -14,10 +14,7 @@ import java.util.logging.Level;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-/**
- *
- * @author Anderson
- */
+
 public class SlackDao extends Dao{
      JdbcTemplate con;
 
@@ -28,19 +25,19 @@ public class SlackDao extends Dao{
      public Slack listar(Integer fkEmpresa){
          String sql = "";
         try {
-            sql = "SELECT * FROM Maquina WHERE fkEmpresa = '" + Session.getFkEmpresa();
+             sql = "SELECT * FROM Slack WHERE fkEmpresa = " + fkEmpresa;
             
              Logger.escreverLogger("Select do Slack ok. - "+ Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
-        List<Slack> slack = con.query(sql,
-                new BeanPropertyRowMapper(Slack.class));
+         List<Slack> slack = con.query(sql,
+                 new BeanPropertyRowMapper(Slack.class));
         try {
-            Logger.escreverLogger("URL Slack: "+ slack.get(0).getUrl() + " ok. -"+ Logger.geradorDatas());
+            Logger.escreverLogger("URL Slack: "+ slack.get(0).getUrlSlack() + " ok. -"+ Logger.geradorDatas());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(SlackDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return slack.isEmpty() ? null : slack.get(0);
+        return slack.get(0);
      }
 }
