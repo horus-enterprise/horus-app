@@ -1,0 +1,309 @@
+[33mcommit 8d6aea7bbde4e220383382a2124c84074de8f0cc[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Dec 3 21:50:39 2021 -0300
+
+    Correção alerta slack
+
+[33mcommit d7e9346f2cca8299ba45933abef0795ba6f9c76f[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Dec 3 21:19:50 2021 -0300
+
+    correção erro slack
+
+[33mcommit 4eda4a9c6ab24e9e4dae3524c7cfe1817f9d8ba0[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Dec 3 19:56:17 2021 -0300
+
+    Pegando url slack do banco
+
+[33mcommit f60e2e9d11bd046f52f82d218dd1ecd480b1a306[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Thu Dec 2 00:33:20 2021 -0300
+
+    alterações na sprint
+
+[33mcommit 8f06b07cb01f30040e627347fd063f731b1ac640[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Wed Dec 1 10:38:47 2021 -0300
+
+    ajuste erro no cadastro da maquina
+
+[33mcommit 5bbcf9289e5befd917401e181d07c63e04225e26[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Tue Nov 30 21:46:06 2021 -0300
+
+    jar
+
+[33mcommit 439c4da2ee4e5519c0a2f1c258f2ffde52326057[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Tue Nov 30 20:23:34 2021 -0300
+
+    Ajuste caminho logger
+
+[33mcommit b0dddeed8ac38b39c8bbc819c7b0fd414f7b50af[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Tue Nov 30 19:26:33 2021 -0300
+
+    limpando arquivo json
+
+[33mcommit 07bf242839651fa66d741a631a90d24b4bf5e902[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Tue Nov 30 17:26:49 2021 -0300
+
+    jar finalizado
+
+[33mcommit 14109f9b71de41ad513bf35bcb63674462c33b9b[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Nov 29 22:47:32 2021 -0300
+
+    ajuste slack
+
+[33mcommit 3e9d94aae28c9a72bb3a23a80637bb5d2e4aa649[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Nov 29 19:41:10 2021 -0300
+
+    Jar enviando alerta no slack
+
+[33mcommit 36e55d2d7bf7e375fbee0a1ea151189d29d0c29f[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Nov 29 17:25:55 2021 -0300
+
+    integracao com slack
+
+[33mcommit 866bdef08a6f6a17f2c9758d333a3c6edc1043c5[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Nov 29 16:26:16 2021 -0300
+
+    integracao com slack
+
+[33mcommit 65563d8e7fc1a3fd4c514cf8d959aa743cb37a98[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Mon Nov 29 00:37:02 2021 -0300
+
+    arrumei o caminho
+
+[33mcommit af5da9d4638ab2df146ee8a56b6eb256ac753951[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Sun Nov 28 22:52:51 2021 -0300
+
+    jar criando json para extensão
+
+[33mcommit e5beea712c2dfc1df72dfbc35f174b235b008eeb[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Sun Nov 28 22:45:05 2021 -0300
+
+    Agora vaiii!
+
+[33mcommit 4f1529ec57919682e47e1070a3cb7622e542ee70[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Nov 26 21:23:41 2021 -0300
+
+    jar com dados formatados
+
+[33mcommit 16209b503db76e8573a4ace994458e25fb099167[m
+Author: Viniciuslima076 <Viniciuslima076>
+Date:   Wed Nov 24 19:09:24 2021 -0300
+
+    Logger att
+
+[33mcommit b80fa56960fe6b88ac82618a7b2ab59a73fc453a[m
+Author: Viniciuslima076 <Viniciuslima076>
+Date:   Wed Nov 24 16:31:05 2021 -0300
+
+    Logger att
+
+[33mcommit 37d5a91d33cf85bb22e3c32fc7c7acaa8545f8e2[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Tue Nov 23 20:58:16 2021 -0300
+
+    logger com data, falta info usuario
+
+[33mcommit ca4e93034f71bbfdf5ef5ada1381e3e42ea0e9bd[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Mon Nov 22 22:30:24 2021 -0300
+
+    arquivo de fluxo logger version1.0.6
+
+[33mcommit 69618f3d755be1369ae4d981813fdcdbb3f16002[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Mon Nov 22 22:17:58 2021 -0300
+
+    fluxo de arquivos logger version1.0.5
+
+[33mcommit 8252a8e07324d733f835d03351bde6cb59cdbc0d[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Sun Nov 21 22:11:12 2021 -0300
+
+    jar conectado no azure ! agora vaigit add .!
+
+[33mcommit 94da8198941570e64f047d2d2ed2785da761e98b[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Sun Nov 21 16:51:46 2021 -0300
+
+    logger atualizado 1.04
+
+[33mcommit 678554d0e098eea735a5315a366118c4763c427a[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Sun Nov 21 14:21:48 2021 -0300
+
+    jar finalizado sem log
+
+[33mcommit a336009bbd1614a8ca36e429137efc59f4acde70[m
+Merge: 4587270 95ac509
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Sun Nov 21 13:33:14 2021 -0300
+
+    jar finalizado
+
+[33mcommit 45872706cfeb4c0c2a14f995097f01b7ef31753c[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Sun Nov 21 13:31:36 2021 -0300
+
+    jar finalizado
+
+[33mcommit 95ac509d83b9550c792be1d0cb30fd62c146303c[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Sat Nov 20 01:51:19 2021 -0300
+
+    fluxo de arquivos log version1.0.3
+
+[33mcommit 8c2ba485bb251aaef81ea4a7b6ea63281c3ad4f7[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Thu Nov 18 11:17:43 2021 -0300
+
+    fluxo de arquivos log version1.0.2
+
+[33mcommit 2f6f91eed137d66d9f2db6927e7eac8c08733611[m
+Author: Teixeira01 <mateus.folha@bandtec.com.br>
+Date:   Thu Nov 18 09:16:25 2021 -0300
+
+    fluxo de arquivos log.version1.0.1
+
+[33mcommit 4dda879a7e6dba82b37098cd53d4ba63ebcf9cce[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Tue Nov 16 10:31:10 2021 -0300
+
+    tela de redefinir senha
+
+[33mcommit c7fca25c72bb8309e6fc4e00eb3ebade5e0ac254[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Nov 15 22:27:19 2021 -0300
+
+    Jar em andamento!
+
+[33mcommit 312f88b49e95cce84f18cfb67cb3972af70d741d[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Mon Nov 8 13:27:01 2021 -0300
+
+    Implementando sessões
+
+[33mcommit 475bd753ff9c2bba0907ce4db29752cc26f603c2[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Nov 5 17:00:45 2021 -0300
+
+    .
+
+[33mcommit 2bff75bfe0dbe8b1a9366495a7ac1ca3c53a1c86[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Nov 5 16:23:19 2021 -0300
+
+    aujuste na captação de dados apenas quando o loguin for efetuado
+
+[33mcommit f1064046ac42d393268462bc430ea73c7d3c436b[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Wed Nov 3 09:41:43 2021 -0300
+
+    metodo Timer para persistencia do registro
+
+[33mcommit e604d7c1cad446d7a27b21443209804226d24b24[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Wed Oct 20 00:34:29 2021 -0300
+
+    envio dos dados monitorados
+
+[33mcommit bed4820da7311b46f00d899504e906416927c7c6[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Tue Oct 19 21:19:49 2021 -0300
+
+    checkpoint erro ao passar cpuUso
+
+[33mcommit 6b4bc996de2302551c93d604555c58b63009fb8d[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Tue Oct 19 14:01:07 2021 -0300
+
+    checkpoint 2
+
+[33mcommit 4a6a27aaa506b82c9889c9868a18bfdfc3f34979[m
+Merge: f6bd414 253c8c6
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Mon Oct 18 22:43:15 2021 -0300
+
+    Merge branch 'main' of https://github.com/horus-enterprise/horus-app
+
+[33mcommit f6bd4144f48c77d540b532d54298b94d2c5936e9[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Mon Oct 18 22:43:00 2021 -0300
+
+    build jar e padronização de login no mysql
+
+[33mcommit 253c8c624ff9a86ded5b97e8b17d0028a530ba85[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Oct 18 22:22:57 2021 -0300
+
+    ajustes de alinhamento da tela home
+
+[33mcommit 210ff6795fa6496815f562ad8b929f27937e0079[m
+Merge: bdf812c 62ac0da
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Oct 18 21:34:30 2021 -0300
+
+    Tela login com redrect e conexão com o BD
+
+[33mcommit bdf812c2eb1ea43e6f09c0021341209e70c9ff2e[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Oct 18 20:45:27 2021 -0300
+
+    .
+
+[33mcommit 62ac0da37911730303c79c7aa5e6403f64de9a2f[m
+Merge: 8b28a6f 789c54f
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Mon Oct 18 20:41:07 2021 -0300
+
+    merge error
+
+[33mcommit 8b28a6f5e2025f525ee82e22a3fa8011fe41986b[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Mon Oct 18 20:34:28 2021 -0300
+
+    Funcionario DAO
+
+[33mcommit 789c54fbf23a04ccb66a1daf220370869e9c42dc[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Mon Oct 18 17:38:15 2021 -0300
+
+    login swing com redrect
+
+[33mcommit 2386e6a002f0d3a85a6ed10917fcf06a0ca1e929[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Sun Oct 17 22:06:09 2021 -0300
+
+    tudao checkpoint
+
+[33mcommit ffdf896c41a41e9b8a40624bf095029fc648f456[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Fri Oct 15 19:56:57 2021 -0300
+
+    model das classes
+
+[33mcommit cc3e34a6f2a27cdabd6a80d2eee55236cba652f6[m
+Author: andersonoliveira95 <anderson.oliveira@bandtec.com.br>
+Date:   Fri Oct 15 17:42:10 2021 -0300
+
+    Tela login swing
+
+[33mcommit 864bf6d7a6b24fb4d5082a76834aa283310471e5[m
+Author: Gabriel Teodoro <gabriel.skywalkerr@gmail.com>
+Date:   Fri Oct 15 17:32:45 2021 -0300
+
+    Initial commit

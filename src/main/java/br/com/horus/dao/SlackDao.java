@@ -16,68 +16,74 @@ import java.util.logging.Level;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+public class SlackDao extends Dao {
 
-public class SlackDao extends Dao{
-     JdbcTemplate con;
+    JdbcTemplate con;
 
-     public SlackDao(){
-         this.con = new JdbcTemplate(getDataSource());
-     }
-     
-     public Slack listar(Integer fkEmpresa){
-         String sql = "";
+    final Double MAX_USO_RAM = 5.0;
+    final Double MAX_USO_DISCO = 80.0;
+    final Double MAX_USO_CPU = 80.0;
+
+    public SlackDao() {
+        this.con = new JdbcTemplate(getDataSource());
+    }
+
+    public Slack listar(Integer fkEmpresa) {
+        String sql = "";
         try {
-             sql = "SELECT * FROM Slack WHERE fkEmpresa = " + fkEmpresa;
-            
-             Logger.escreverLogger("Select do Slack ok. - "+ Logger.geradorDatas());
+            sql = "SELECT * FROM Slack WHERE fkEmpresa = " + fkEmpresa;
+
+            Logger.escreverLogger("Select do Slack ok. - " + Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
-         List<Slack> slack = con.query(sql,
-                 new BeanPropertyRowMapper(Slack.class));
+        List<Slack> slack = con.query(sql,
+                new BeanPropertyRowMapper(Slack.class));
         try {
-            Logger.escreverLogger("URL Slack: "+ slack.get(0).getUrlSlack() + " ok. -"+ Logger.geradorDatas());
+            Logger.escreverLogger("URL Slack: " + slack.get(0).getUrlSlack() + " ok. -" + Logger.geradorDatas());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(SlackDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return slack.get(0);
-     }
-     
-     public String alertaOcorrencia(Integer idFuncionario){
-         MonitoramentoHardware m = new MonitoramentoHardware();
-         String sql = "";
-         try {
-             sql = " select * from monitoramentohardware where idOcorrencia =" + 
-                     "(select max(idOcorrencia) from monitoramentohardware where fkFuncionario =" + idFuncionario +")";
-            
-             Logger.escreverLogger("Select do Slack ok. - "+ Logger.geradorDatas());
+    }
+
+    public String alertaOcorrencia(Integer idFuncionario) {
+        MonitoramentoHardware m = new MonitoramentoHardware();
+        String sql = "";
+        try {
+            sql = " select * from monitoramentohardware where idOcorrencia ="
+                    + "(select max(idOcorrencia) from monitoramentohardware where fkFuncionario =" + idFuncionario + ")";
+
+            Logger.escreverLogger("Select do Slack ok. - " + Logger.geradorDatas());
         } catch (IOException e) {
             Logger.loggerException(e);
         }
-        
+
         List<MonitoramentoHardware> ocorrencia = con.query(sql,
-                 new BeanPropertyRowMapper(MonitoramentoHardware.class));
+                new BeanPropertyRowMapper(MonitoramentoHardware.class));
         m = ocorrencia.get(0);
         try {
-            Logger.escreverLogger(""+ Logger.geradorDatas());
+            Logger.escreverLogger("" + Logger.geradorDatas());
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(SlackDao.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
+
         
-        if(m.getCpuUso() >= 75.0){
-           return String.format("!Alerta! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável da cpu Uso: %.1f",
-                   Hostname.getHostname(),Session.getNome(), m.getCpuUso());
+        if(m.getCpuUso() >= this.MAX_USO_CPU ||
+           m.getDisco() >= this.MAX_USO_DISCO ||
+           m.getRam() >= this.MAX_USO_RAM) 
+        {   
+            StringBuilder msg = new StringBuilder();
+            msg.append("!!!ATENÇÃO!!!\n\n");
+            msg.append("Funcionário: " + Session.getNome() + "\n");
+            msg.append("Máquina: " + Hostname.getHostname() + "\n");
+            msg.append("Memória utilizada: " + m.getRam() + "%\n");
+            msg.append("Armazenamento utilizado: " + m.getDisco() + "%\n");
+            msg.append("Uso da CPU: " + m.getCpuUso() + "%\n");
+            
+            return String.valueOf(msg);
         }
         
-        if(m.getDisco() > 75.0){
-           return String.format("!Alerta! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável do Disco Uso: %.1f",
-                   Hostname.getHostname(),Session.getNome(),m.getDisco());
-        }
-        
-        if(m.getRam() > 75.0){
-           return String.format("!Alerta! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável do Disco Uso: %.1f",
-                   Hostname.getHostname(),Session.getNome(),m.getRam());
-        }
         return null;
-     }
+    }
 }

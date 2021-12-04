@@ -14,9 +14,9 @@ public class MonitoramentoHardwareDao extends Dao {
         this.con = new JdbcTemplate(getDataSource());
     }
 
-    public void enviar(MonitoramentoHardware ocorrencia) {        
+    public void enviar(MonitoramentoHardware ocorrencia) throws IOException {
         StringBuilder sql = new StringBuilder();
-        try{
+
         sql.append("INSERT INTO MonitoramentoHardware (");
         sql.append("fkMaquina, cpuUso, cpuTemperatura, disco, ram, uptime, fkFuncionario)");
         sql.append("VALUES (");
@@ -28,10 +28,12 @@ public class MonitoramentoHardwareDao extends Dao {
         sql.append(ocorrencia.getUptime() + ",");
         sql.append(Session.getIdFuncionario());
         sql.append(");");
-       Logger.escreverLogger("> Insert monitoramento ok. - " + Logger.geradorDatas());
-        }catch(IOException e){
-            Logger.loggerException(e);
+
+        try {
+            con.execute(sql.toString());
+            Logger.escreverLogger("> Insert monitoramento ok. - " + Logger.geradorDatas());
+        } catch (IOException e) {
+            Logger.escreverLogger("> " + e.getMessage());
         }
-        con.execute(sql.toString());
     }
 }
