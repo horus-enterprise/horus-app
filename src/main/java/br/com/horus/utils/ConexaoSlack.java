@@ -14,10 +14,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.json.JSONObject;
 
-/**
- *
- * @author Anderson
- */
+
 public class ConexaoSlack {
 
     private static HttpClient cliente = HttpClient.newHttpClient();
@@ -38,6 +35,7 @@ public class ConexaoSlack {
 
     public static void enviarAlerta() throws IOException, InterruptedException{
         SlackDao slc = new SlackDao();
+        slc.listar(Session.getFkEmpresa());
         String mensagem = slc.alertaOcorrencia(Session.getIdFuncionario());
         JSONObject json = new JSONObject();
 
@@ -46,7 +44,7 @@ public class ConexaoSlack {
     }
     
     public static void mensagemInicial() throws IOException, InterruptedException {
-        String mensagemInicial = String.format("Iniciando monitoramento da maquina << %s >> que esta sendo operada pelo proficional %s",
+        String mensagemInicial = String.format("Iniciando monitoramento da maquina << %s >> que esta sendo operada pelo profissional %s",
                 Hostname.getHostname(), Session.getNome());
         JSONObject json = new JSONObject();
 

@@ -23,6 +23,8 @@ public class App {
 
     public static void start() throws IOException, InterruptedException {
         MaquinaDao maquinaDAO = new MaquinaDao();
+        
+        ConexaoSlack.enviarAlerta();
        
         Maquina maquina = maquinaDAO.listar(Hostname.getHostname(), Session.getFkEmpresa());
 
@@ -55,6 +57,8 @@ public class App {
         ocorrencia.setUptime(uptime);
 
         System.out.println(ocorrencia);
+        
+        
 
         MonitoramentoHardwareDao monitoramentoHardwareDAO = new MonitoramentoHardwareDao();
         monitoramentoHardwareDAO.enviar(ocorrencia);
