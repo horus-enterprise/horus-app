@@ -7,9 +7,11 @@ package br.com.horus.gui;
 
 import br.com.horus.dao.FuncionarioDao;
 import br.com.horus.dao.MaquinaDao;
+import br.com.horus.dao.SlackDao;
 import static br.com.horus.main.App.start;
 import br.com.horus.model.Funcionario;
 import br.com.horus.model.Maquina;
+import br.com.horus.model.Slack;
 import br.com.horus.utils.ConexaoSlack;
 import br.com.horus.utils.Hostname;
 import java.util.Timer;
@@ -19,7 +21,6 @@ import static br.com.horus.utils.Time.secondsToHHmmss;
 import java.io.IOException;
 import br.com.horus.utils.Logger;
 import java.util.logging.Level;
-
 
 /**
  *
@@ -292,8 +293,6 @@ public class Login extends javax.swing.JFrame {
         String email, senha;
         email = txtEmail.getText();
         senha = txtSenha.getText();
-        
-        
 
         FuncionarioDao funcionarioDAO = new FuncionarioDao();
         MaquinaDao maquinaDAO = new MaquinaDao();
@@ -304,38 +303,35 @@ public class Login extends javax.swing.JFrame {
             showMessageDialog(null, "E-mail ou senha incorretos!\nVerifique e tente novamente.");
             return;
         }
-        
-      
-        
+
         Session.criarSessao(
                 funcionario.getNomeFuncionario(),
                 funcionario.getEmail(),
                 funcionario.getFkEmpresa(),
                 funcionario.getIdFuncionario()
         );
-        
-       
-        System.out.println(Session.getFkEmpresa());
+
+        SlackDao slackDAO = new SlackDao();
+        Slack slc = slackDAO.listar(Session.getFkEmpresa());
+        ConexaoSlack.setURL(slc.getUrlSlack());
 
         maquinaDAO.validaMaquina();
-        
-        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(),Session.getFkEmpresa());
-        
+
+        Maquina maquina = maquinaDAO.listar(Hostname.getHostname(), Session.getFkEmpresa());
+
         Session.setIdMaquina(maquina.getIdMaquina());
-        
+
         try {
-            
-        Logger.criarJson();
-        ConexaoSlack.mensagemInicial();
+
+            Logger.criarJson();
+            ConexaoSlack.mensagemInicial();
         } catch (Exception e) {
         }
-        
 
         Home obj = new Home();
         obj.setVisible(true);
         setVisible(false);
-        
-        
+
         final long segundos = (1000);
 
         Timer tempo = new Timer();
@@ -347,12 +343,12 @@ public class Login extends javax.swing.JFrame {
                 Session.setUptime(Session.getUptime() + 1);
                 System.out.println(secondsToHHmmss(Session.getUptime()));
                 obj.atualizaUptime();
-                
+
                 if (Session.getUptime() % 15 == 0) {
                     try {
                         start();
                     } catch (IOException | InterruptedException ex) {
-                        
+
                     }
                 }
             }

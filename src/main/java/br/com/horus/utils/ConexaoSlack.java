@@ -36,71 +36,15 @@ public class ConexaoSlack {
         System.out.println(String.format("Response: %s", response.body()));
     }
 
-    public static void enviarAlerta(MonitoramentoHardware m) throws IOException, InterruptedException {
-        SlackDao s = new SlackDao();
-        s.listar(Integer.BYTES);
+    public static void enviarAlerta() throws IOException, InterruptedException{
+        SlackDao slc = new SlackDao();
+        String mensagem = slc.alertaOcorrencia(Session.getIdFuncionario());
+        JSONObject json = new JSONObject();
 
-        String hostname = Hostname.getHostname();
-        String nomeFuncionario = Session.getNome();
-        String mensagem;
-        String componente;
-        Double porcentagemUso;
-
-        if (m.getCpuUso() >= 75.0) {
-            componente = "da CPU";
-            porcentagemUso = m.getCpuUso();
-
-            if (m.getCpuUso() >= 90.0) {
-                mensagem = String.format("!Alerta Critico! A máquina %s que está sendo operada por %s, esta em estado critico %s  %Uso : %.1f",
-                        hostname, nomeFuncionario, componente, porcentagemUso);
-            } else {
-                mensagem = String.format("!Alerta Emergencial! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável %s  %Uso : %.1f",
-                        hostname, nomeFuncionario, componente, porcentagemUso);
-
-                JSONObject json = new JSONObject();
-                json.put("text", mensagem);
-
-                sendMessage(json);
-            }
-        }
-
-        if (m.getDisco() >= 75.0) {
-            componente = "do Disco";
-            porcentagemUso = m.getDisco();
-
-            if (m.getDisco() >= 90.0) {
-                mensagem = String.format("!Alerta Critico! A máquina %s que está sendo operada por %s, esta em estado critico %s  %Uso : %.1f",
-                        hostname, nomeFuncionario, componente, porcentagemUso);
-            } else {
-                mensagem = String.format("!Alerta Emergencial! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável %s  %Uso : %.1f",
-                        hostname, nomeFuncionario, componente, porcentagemUso);
-
-                JSONObject json = new JSONObject();
-                json.put("text", mensagem);
-
-                sendMessage(json);
-            }
-        }
-
-        if (m.getRam() >= 75.0) {
-            componente = "da memória Ram";
-            porcentagemUso = m.getRam();
-
-            if (m.getDisco() >= 90.0) {
-                mensagem = String.format("!Alerta Critico! A máquina %s que está sendo operada por %s, esta em estado critico %s  %Uso : %.1f",
-                        hostname, nomeFuncionario, componente, porcentagemUso);
-            } else {
-                mensagem = String.format("!Alerta Emergencial! A máquina %s que está sendo operada por %s, esta excedendo a utilização recomendável %s  %Uso : %.1f",
-                        hostname, nomeFuncionario, componente, porcentagemUso);
-
-                JSONObject json = new JSONObject();
-                json.put("text", mensagem);
-
-                sendMessage(json);
-            }
-        }
+        json.put("text", mensagem);
+        sendMessage(json);
     }
-
+    
     public static void mensagemInicial() throws IOException, InterruptedException {
         String mensagemInicial = String.format("Iniciando monitoramento da maquina << %s >> que esta sendo operada pelo proficional %s",
                 Hostname.getHostname(), Session.getNome());
@@ -110,8 +54,6 @@ public class ConexaoSlack {
         sendMessage(json);
     }
 
-    
-    
     public static void setURL(String URL) {
         ConexaoSlack.URL = URL;
     }
