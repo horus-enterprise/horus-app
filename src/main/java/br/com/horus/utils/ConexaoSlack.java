@@ -21,7 +21,7 @@ public class ConexaoSlack {
     private static String URL = "";
 
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
-
+        try{
         HttpRequest request = HttpRequest.newBuilder(
                 URI.create(URL))
                 .header("accept", "application/json")
@@ -31,6 +31,11 @@ public class ConexaoSlack {
 
         System.out.println(String.format("Status: %s", response.statusCode()));
         System.out.println(String.format("Response: %s", response.body()));
+        Logger.escreverLogger("Mensagem enviada ao Slack. - " + Logger.geradorDatas());
+        }catch(Exception e){
+            Logger.escreverLogger("Impossível enviar mensagem ao Slack: "
+            + e.getMessage() + " - " + Logger.geradorDatas());
+        }
     }
 
     public static void enviarAlerta() throws IOException, InterruptedException{
@@ -44,12 +49,18 @@ public class ConexaoSlack {
     }
     
     public static void mensagemInicial() throws IOException, InterruptedException {
+        try{
         String mensagemInicial = String.format("Iniciando monitoramento da maquina << %s >> que esta sendo operada pelo profissional %s",
                 Hostname.getHostname(), Session.getNome());
         JSONObject json = new JSONObject();
 
         json.put("text", mensagemInicial);
         sendMessage(json);
+        Logger.escreverLogger("Bem-vindo ao Slack! - " + Logger.geradorDatas());
+        }catch(Exception e){
+            Logger.escreverLogger("Impossível fazer saudação do Slack: "
+            + e.getMessage() + " - " + Logger.geradorDatas());
+        }
     }
 
     public static void setURL(String URL) {

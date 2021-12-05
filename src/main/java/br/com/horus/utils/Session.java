@@ -70,15 +70,16 @@ public class Session {
             Session.idFuncionario = idFuncionario;
        
 
-            Logger.escreverLogger("> Usuário autenticado.");
+            Logger.escreverLogger("> Usuário autenticado. - " + Logger.geradorDatas());
 
             System.out.println("Sessão validada");
            
             
             System.out.println("json atualizado");
            
-        } catch (IOException e) {
-            Logger.loggerException(e);
+            } catch (Exception e) {
+            Logger.escreverLogger("Impossível autenticar usuário :"
+                    + e.getMessage()+ " - " + Logger.geradorDatas());
         }
 
     }
@@ -91,9 +92,10 @@ public class Session {
             Session.idFuncionario = null;
             Session.idMaquina = null;
             Logger.criarJson();
-            Logger.escreverLogger("Encerrou essa sessão.");
-        } catch (IOException e) {
-            Logger.loggerException(e);
+            Logger.escreverLogger("Encerrou essa sessão. - "+ Logger.geradorDatas());
+       } catch (Exception e) {
+            Logger.escreverLogger("Não foi possível encerrar sessão: "
+                    + e.getMessage()+ " - " + Logger.geradorDatas());
         }
     }
 

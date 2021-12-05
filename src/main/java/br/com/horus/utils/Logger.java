@@ -73,7 +73,7 @@ public class Logger {
         writer.close();
     }
 
-    public static void escreverLogger(String texto) throws IOException {
+    public static void escreverLogger(String texto) {
         String caminhoPasta = String.format("%s\\horus-loggers\\", System.getProperty("user.home"));
 
         if (caminho >= 1) {
