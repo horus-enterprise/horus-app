@@ -17,15 +17,9 @@ import br.com.horus.utils.Hostname;
 import java.util.Timer;
 import java.util.TimerTask;
 import br.com.horus.utils.Session;
-import static br.com.horus.utils.Time.secondsToHHmmss;
 import java.io.IOException;
 import br.com.horus.utils.Logger;
-import java.util.logging.Level;
 
-/**
- *
- * @author Anderson
- */
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Login extends javax.swing.JFrame {
@@ -341,7 +335,6 @@ public class Login extends javax.swing.JFrame {
             @Override
             public void run() {
                 Session.setUptime(Session.getUptime() + 1);
-                System.out.println(secondsToHHmmss(Session.getUptime()));
                 obj.atualizaUptime();
 
                 if (Session.getUptime() % 15 == 0) {

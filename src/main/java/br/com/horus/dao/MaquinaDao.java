@@ -5,10 +5,8 @@ import br.com.horus.utils.Hostname;
 import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
 import com.github.britooo.looca.api.core.Looca;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -47,10 +45,8 @@ public class MaquinaDao extends Dao {
         Maquina maquina = listar(Hostname.getHostname(), Session.getFkEmpresa());
 
         if (maquina != null) {
-            System.out.println("validada");
             return true;
         } else {
-            System.out.println("Vai ser cadastrada");
             cadastraMaquina();
             return true;
         }
@@ -65,7 +61,7 @@ public class MaquinaDao extends Dao {
                     + " values(?,?,?,?,?,?);";
             con.update(insertStatement, Hostname.getHostname(), Session.getFkEmpresa(), looca.getProcessador().getNome(),
                     looca.getGrupoDeDiscos().getDiscos().get(0).getModelo(), tamanhoDisco, memoriaRam);
-            System.out.println("Nova maquina cadastrada!");
+
             Logger.escreverLogger("> Nova máquina cadastrada." + Logger.geradorDatas());
         } catch (Exception e) {
             Logger.escreverLogger("Algum erro em cadastrar a máquina: "

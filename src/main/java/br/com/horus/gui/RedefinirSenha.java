@@ -8,10 +8,6 @@ package br.com.horus.gui;
 import br.com.horus.dao.FuncionarioDao;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-/**
- *
- * @author Anderson
- */
 public class RedefinirSenha extends javax.swing.JFrame {
 
     /**

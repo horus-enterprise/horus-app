@@ -16,7 +16,6 @@ public class App {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Logger.criarLogger();
-        System.out.println("Iniciando...");
         Login login = new Login();
         login.setVisible(true);
     }

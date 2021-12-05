@@ -2,12 +2,9 @@ package br.com.horus.dao;
 
 import br.com.horus.model.Funcionario;
 import br.com.horus.utils.Logger;
-import java.io.IOException;
 import java.util.ArrayList;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import java.util.List;
-import java.util.logging.Level;
 import static javax.swing.JOptionPane.showMessageDialog;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

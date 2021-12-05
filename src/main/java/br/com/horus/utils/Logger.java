@@ -18,10 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import org.json.JSONObject;
 
-/**
- *
- * @author Horus
- */
 public class Logger {
 
     static FileOutputStream arquivo;

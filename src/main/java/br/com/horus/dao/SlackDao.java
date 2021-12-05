@@ -10,7 +10,6 @@ import br.com.horus.model.Slack;
 import br.com.horus.utils.Hostname;
 import br.com.horus.utils.Logger;
 import br.com.horus.utils.Session;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,7 +21,7 @@ public class SlackDao extends Dao {
 
     JdbcTemplate con;
 
-    final Double MAX_USO_RAM = 5.0;
+    final Double MAX_USO_RAM = 80.0;
     final Double MAX_USO_DISCO = 80.0;
     final Double MAX_USO_CPU = 80.0;
 
